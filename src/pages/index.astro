@@ -1,17 +1,140 @@
 ---
-
+const workItems = [
+  { label: "Scene.", bullets: ["Scene", "Motion", "Medical", "Trial Delivery"], cta: "Get started" },
+  { label: "Motion.", bullets: ["Scene", "Motion", "Medical", "Trial Delivery"], cta: "Get started" },
+];
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vult Labs</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <div class="nav-left">☰ <span>MENU</span></div>
+        <div class="nav-center">
+          <span class="logo-mark">▲</span><span class="logo-text">Vult</span>
+        </div>
+        <div class="nav-right">⌕</div>
+      </nav>
+
+      <div class="hero-content">
+        <h1>Make it undeniable.</h1>
+        <p class="lead">
+          Vult builds cinematic litigation visuals that turn complex accidents, injuries,
+          and technical failures into clear visual evidence.
+        </p>
+        <p class="sublead">
+          Accurate to the data.<br />
+          Structured for the courtroom.
+        </p>
+        <a class="cta" href="#work">Get started</a>
+      </div>
+
+      <div class="hero-overlay" />
+      <div class="hero-bg" />
+    </header>
+
+    <main>
+      <section class="section" id="work">
+        <div class="grid two">
+          <div class="card media">
+            <div class="placeholder">WORK GRID / THUMBNAILS</div>
+          </div>
+
+          <div class="copy">
+            <div class="kicker">WORK</div>
+            <h2>The difference is in the frame.</h2>
+            <ul class="bullets">
+              <li>Cinematic discipline.</li>
+              <li>Measured animation.</li>
+              <li>Intentional lighting.</li>
+              <li>Accurate reconstruction.</li>
+            </ul>
+            <a class="arrow" href="#contact">→ <span>GET STARTED</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid two flip">
+          <div class="copy">
+            <div class="kicker">WORK</div>
+            <h3>Scene.</h3>
+            <ul class="mini">
+              <li>Scene</li><li>Motion</li><li>Medical</li><li>Trial Delivery</li>
+            </ul>
+            <a class="arrow" href="#contact">→ <span>GET STARTED</span></a>
+          </div>
+
+          <div class="card media">
+            <div class="placeholder wide">SCENE IMAGE</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid two">
+          <div class="card media">
+            <div class="placeholder wide">MOTION IMAGE</div>
+          </div>
+
+          <div class="copy">
+            <div class="kicker">WORK</div>
+            <h3>Motion.</h3>
+            <ul class="mini">
+              <li>Scene</li><li>Motion</li><li>Medical</li><li>Trial Delivery</li>
+            </ul>
+            <a class="arrow" href="#contact">→ <span>GET STARTED</span></a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer" id="contact">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="footer-links">
+              <a href="#">TEAM</a>
+              <a href="#">CASES</a>
+              <a href="#">CONTACT</a>
+              <a href="#">SHOP</a>
+            </div>
+            <div class="fineprint">
+              Copyright 2026 Vult, LLC.<br />
+              All rights reserved. <a href="#">Privacy Policy</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <div class="footer-title">MORE VULT</div>
+            <div class="footer-links dim">
+              <a href="#">FACEBOOK</a>
+              <a href="#">TWITTER</a>
+              <a href="#">INSTAGRAM</a>
+              <a href="#">LINKEDIN</a>
+              <a href="#">YOUTUBE</a>
+            </div>
+          </div>
+
+          <div class="footer-col wide">
+            <div class="footer-title">WANT MORE VULT?</div>
+            <p class="footer-text">
+              Get our emails. Letters from our filmmakers, new trailers, podcasts,
+              behind the scenes, and more. Not too often — just enough.
+            </p>
+
+            <form class="signup">
+              <input type="email" placeholder="EMAIL" />
+              <button type="button">SIGN UP</button>
+            </form>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
