@@ -389,6 +389,15 @@ h1 {
   align-items: stretch;
 }
 
+.grid.two.about {
+  grid-template-columns: 1.4fr .6fr;
+}
+
+.grid.two.about .card.media {
+  padding: 48px 64px;
+  min-height: 640px;
+}
+
 .grid.two.flip {
   grid-template-columns: .8fr 1.2fr;
 }
