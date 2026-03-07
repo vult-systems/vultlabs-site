@@ -13,30 +13,87 @@
   <a class="nav-right" href="#contact" aria-label="Search">⌕</a>
 </nav>
 
+<!-- Floating hamburger: always visible when nav is hidden -->
+<button class="floating-hamburger" id="floating-hamburger" aria-label="Toggle menu" aria-expanded="false">
+  <span class="hamburger"></span>
+  <span class="menu-label">Menu</span>
+</button>
+
 <div class="mobile-menu" id="mobile-menu">
   <a href="#work">Work</a>
   <a href="#contact">Contact</a>
 </div>
 
 <script>
-  const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const navToggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const floatingToggle = document.getElementById('floating-hamburger') as HTMLButtonElement;
   const menu = document.getElementById('mobile-menu') as HTMLElement;
 
-  toggle?.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!expanded));
+  function toggleMenu(btn: HTMLButtonElement) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    const newState = String(!expanded);
+    navToggle.setAttribute('aria-expanded', newState);
+    floatingToggle.setAttribute('aria-expanded', newState);
     menu.classList.toggle('open');
-  });
+  }
+
+  navToggle?.addEventListener('click', () => toggleMenu(navToggle));
+  floatingToggle?.addEventListener('click', () => toggleMenu(floatingToggle));
 
   menu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-expanded', 'false');
+      floatingToggle.setAttribute('aria-expanded', 'false');
       menu.classList.remove('open');
     });
   });
 
-  const nav = document.getElementById('nav');
+  // Scroll behavior
+  const nav = document.getElementById('nav') as HTMLElement;
+  const hero = document.querySelector('.hero') as HTMLElement;
+  let lastScrollY = 0;
+  let ticking = false;
+
+  function onScroll() {
+    const currentY = window.scrollY;
+    const heroBottom = hero ? hero.offsetHeight : 500;
+    const scrollingDown = currentY > lastScrollY;
+    const pastHero = currentY > heroBottom;
+
+    if (currentY <= 60) {
+      // At top: transparent nav, no hiding
+      nav.classList.remove('nav-hidden', 'nav-solid');
+      floatingToggle.classList.remove('visible', 'dark');
+    } else if (scrollingDown && currentY > 80) {
+      // Scrolling down: hide nav, show floating hamburger
+      nav.classList.add('nav-hidden');
+      floatingToggle.classList.add('visible');
+      if (pastHero) {
+        floatingToggle.classList.add('dark');
+      } else {
+        floatingToggle.classList.remove('dark');
+      }
+    } else if (!scrollingDown) {
+      // Scrolling up: show nav
+      nav.classList.remove('nav-hidden');
+      floatingToggle.classList.remove('visible');
+      if (pastHero) {
+        // Past hero: solid white nav with dark text
+        nav.classList.add('nav-solid');
+      } else {
+        // Still in hero: transparent with white text
+        nav.classList.remove('nav-solid');
+      }
+    }
+
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
   window.addEventListener('scroll', () => {
-    nav?.classList.toggle('scrolled', window.scrollY > 60);
+    if (!ticking) {
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
   });
 </script>
