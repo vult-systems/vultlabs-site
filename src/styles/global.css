@@ -410,11 +410,13 @@ a.card.media.work-link {
   display: block;
 }
 
-a.card.media.work-link .media-placeholder {
+a.card.media.work-link .media-placeholder,
+a.card.media.work-link .work-grid {
   transition: transform .5s cubic-bezier(.25,.1,.25,1);
 }
 
-a.card.media.work-link:hover .media-placeholder {
+a.card.media.work-link:hover .media-placeholder,
+a.card.media.work-link:hover .work-grid {
   transform: scale(1.04);
 }
 

@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base title="About — Vult Labs" description="Vult builds cinematic litigation visuals that turn complex accidents, injuries, and technical failures into clear visual evidence.">
+  <Nav />
+
+  <section class="wd-hero" style="background: linear-gradient(160deg, #1a1a1e 0%, #0b0d0f 60%);">
+    <div class="wd-hero-overlay"></div>
+    <div class="wd-hero-title">
+      <h1 class="wd-title">About Vult.</h1>
+    </div>
+  </section>
+
+  <main>
+    <section class="wd-meta">
+      <div class="wd-meta-inner">
+        <div class="wd-meta-row">
+          <div>
+            <div class="wd-label">What We Do</div>
+            <div class="wd-value">Cinematic Litigation Visuals</div>
+          </div>
+          <div>
+            <div class="wd-label">Capabilities</div>
+            <div class="wd-value">Crash Reconstruction<br />Medical Visualization</div>
+          </div>
+          <a class="wd-back" href="/">← Home</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wd-meta">
+      <div class="wd-meta-inner">
+        <div class="wd-divider"></div>
+      </div>
+    </section>
+
+    <section class="wd-desc">
+      <div class="wd-desc-inner">
+        <p class="wd-desc-text">
+          We build cinematic litigation visuals that turn complex accidents,
+          injuries, and technical failures into clear visual evidence.
+          Accurate to the data. Structured for the courtroom.
+        </p>
+      </div>
+    </section>
+
+    <div class="wd-cta">
+      <a class="wd-cta-link" href="/#contact">⟶ <span>Get Started</span></a>
+    </div>
+
+    <Footer />
+  </main>
+</Base>
