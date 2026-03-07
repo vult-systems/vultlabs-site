@@ -764,7 +764,7 @@ h3 a:hover {
 
 .wd-meta-row {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: auto auto auto 1fr;
   gap: 42px;
   align-items: start;
   padding-bottom: 42px;
@@ -854,6 +854,7 @@ h3 a:hover {
   margin: 0 auto;
   font-family: var(--serif);
   font-size: 18px;
+  font-weight: 700;
   line-height: 1.75;
   color: rgba(0,0,0,.7);
   text-align: left;
