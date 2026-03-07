@@ -537,12 +537,9 @@ h3 a:hover {
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink);
-  transition: opacity .2s;
-  display: inline-flex;
+  display: flex;
   align-items: center;
 }
-
-.arrow:hover { opacity: 1; }
 
 .arrow span { margin-left: 14px; }
 
@@ -550,11 +547,11 @@ h3 a:hover {
   width: 96px;
   height: 28px;
   flex-shrink: 0;
+  transition: transform .35s cubic-bezier(.25,.1,.25,1);
+  transform-origin: left center;
 }
 
-.arrow .arrow-sht { display: none; }
-.arrow:hover .arrow-lng { display: none; }
-.arrow:hover .arrow-sht { display: block; }
+.arrow:hover .arrow-icon { transform: scaleX(1.15); }
 
 /* ---- FOOTER ---- */
 
