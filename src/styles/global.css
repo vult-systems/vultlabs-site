@@ -547,11 +547,10 @@ h3 a:hover {
   width: 96px;
   height: 28px;
   flex-shrink: 0;
-  transition: transform .35s cubic-bezier(.25,.1,.25,1);
-  transform-origin: left center;
+  transition: width .35s cubic-bezier(.25,.1,.25,1);
 }
 
-.arrow:hover .arrow-icon { transform: scaleX(1.15); }
+.arrow:hover .arrow-icon { width: 64px; }
 
 /* ---- FOOTER ---- */
 
