@@ -317,8 +317,8 @@ img { max-width: 100%; display: block; }
 .hero-content {
   position: relative;
   z-index: 3;
-  max-width: 780px;
-  padding: 0 48px;
+  max-width: 900px;
+  padding: 0 56px;
 }
 
 h1 {
@@ -328,6 +328,7 @@ h1 {
   line-height: 1.02;
   margin: 0 0 14px;
   letter-spacing: -.02em;
+  white-space: nowrap;
 }
 
 .lead {
