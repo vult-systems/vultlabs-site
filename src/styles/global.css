@@ -378,19 +378,19 @@ h1 {
 }
 
 .grid {
-  width: min(1440px, calc(100% - 112px));
+  width: min(1560px, calc(100% - 112px));
   margin: 0 auto;
   display: grid;
   gap: 56px;
 }
 
 .grid.two {
-  grid-template-columns: 1.2fr .8fr;
+  grid-template-columns: 1.35fr .65fr;
   align-items: stretch;
 }
 
 .grid.two.flip {
-  grid-template-columns: .8fr 1.2fr;
+  grid-template-columns: .65fr 1.35fr;
 }
 
 /* ---- CARDS & MEDIA ---- */
@@ -436,7 +436,7 @@ a.card.media.work-link:hover .work-grid {
 /* Media placeholder sections */
 .media-placeholder {
   height: 100%;
-  min-height: 560px;
+  min-height: 620px;
   background: linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,.02));
   border: 1px solid rgba(0,0,0,.08);
 }
@@ -513,7 +513,7 @@ h3 a:hover {
 .arrow {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   font-size: 16px;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -524,31 +524,9 @@ h3 a:hover {
 .arrow:hover { color: var(--ink); }
 
 .arrow-icon {
-  display: inline-flex;
-  align-items: center;
-}
-
-.arrow-icon .arrow-stem {
-  display: block;
-  width: 48px;
-  height: 2px;
-  background: currentColor;
-  transition: width .35s cubic-bezier(.25,.1,.25,1);
-  margin-right: -1px;
-}
-
-.arrow-icon .arrow-head {
-  display: block;
-  width: 14px;
-  height: 14px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-
-.arrow:hover .arrow-stem {
-  width: 24px;
+  font-size: 28px;
+  line-height: 1;
+  transition: letter-spacing .35s cubic-bezier(.25,.1,.25,1);
 }
 
 /* ---- FOOTER ---- */
