@@ -622,6 +622,14 @@ h3 a:hover {
 .footer .arrow { color: #fff; }
 .footer .arrow-icon { filter: invert(1); }
 
+.footer-cta {
+  font-size: 13px;
+}
+.footer-cta .arrow-icon {
+  width: 56px;
+  height: 18px;
+}
+
 .signup {
   display: grid;
   grid-template-columns: 1fr 180px;
