@@ -357,6 +357,9 @@ h1 {
 
 .cta:hover { color: #daa636; }
 
+.hero-arrow { color: #fff; }
+.hero-arrow .arrow-icon { filter: invert(1); }
+
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.24) 55%, rgba(0,0,0,.55) 100%);
