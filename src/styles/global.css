@@ -385,12 +385,12 @@ h1 {
 }
 
 .grid.two {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr .8fr;
   align-items: stretch;
 }
 
 .grid.two.flip {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: .8fr 1.2fr;
 }
 
 /* ---- CARDS & MEDIA ---- */
@@ -425,6 +425,7 @@ a.card.media.work-link:hover .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
+  min-height: 560px;
 }
 
 .work-thumb {
@@ -436,15 +437,14 @@ a.card.media.work-link:hover .work-grid {
 /* Media placeholder sections */
 .media-placeholder {
   height: 100%;
-  min-height: 680px;
   background: linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,.02));
   border: 1px solid rgba(0,0,0,.08);
 }
 
-.media-placeholder.scene   { background: linear-gradient(135deg, #2a2a2e, #1a1a1e); }
-.media-placeholder.motion  { background: linear-gradient(135deg, #1e2124, #141618); }
-.media-placeholder.medical { background: linear-gradient(135deg, #1e2228, #14181c); }
-.media-placeholder.trial   { background: linear-gradient(135deg, #22201e, #18160e); }
+.media-placeholder.scene   { min-height: 720px; background: linear-gradient(135deg, #2a2a2e, #1a1a1e); }
+.media-placeholder.motion  { min-height: 600px; background: linear-gradient(135deg, #1e2124, #141618); }
+.media-placeholder.medical { min-height: 520px; background: linear-gradient(135deg, #1e2228, #14181c); }
+.media-placeholder.trial   { min-height: 600px; background: linear-gradient(135deg, #22201e, #18160e); }
 
 /* ---- COPY BLOCKS ---- */
 
