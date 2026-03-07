@@ -1,0 +1,42 @@
+---
+---
+
+<nav class="nav" id="nav">
+  <button class="nav-left nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span class="hamburger"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <a class="nav-center" href="#top">
+    <img src="/images/logo.svg" alt="Vult" class="nav-logo" />
+    <span class="logo-text">VULT</span>
+  </a>
+  <a class="nav-right" href="#contact" aria-label="Search">⌕</a>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#work">Work</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-menu') as HTMLElement;
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu.classList.toggle('open');
+  });
+
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+    });
+  });
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav?.classList.toggle('scrolled', window.scrollY > 60);
+  });
+</script>

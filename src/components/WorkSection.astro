@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  items: string[];
+  variant: string;
+  flip?: boolean;
+}
+
+const { title, items, variant, flip = false } = Astro.props;
+---
+
+<section class="section">
+  <div class={`grid two${flip ? ' flip' : ''}`}>
+    {flip ? (
+      <Fragment>
+        <div class="copy">
+          <div class="kicker">Work</div>
+          <h3>{title}</h3>
+          <ul class="mini">
+            {items.map((item) => <li>{item}</li>)}
+          </ul>
+          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
+        </div>
+        <div class="card media">
+          <div class={`media-placeholder ${variant}`}></div>
+        </div>
+      </Fragment>
+    ) : (
+      <Fragment>
+        <div class="card media">
+          <div class={`media-placeholder ${variant}`}></div>
+        </div>
+        <div class="copy">
+          <div class="kicker">Work</div>
+          <h3>{title}</h3>
+          <ul class="mini">
+            {items.map((item) => <li>{item}</li>)}
+          </ul>
+          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
+        </div>
+      </Fragment>
+    )}
+  </div>
+</section>

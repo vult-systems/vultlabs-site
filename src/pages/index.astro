@@ -1,43 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import WorkSection from "../components/WorkSection.astro";
+import Footer from "../components/Footer.astro";
+
+const serviceItems = ["Scene", "Motion", "Medical", "Trial Delivery"];
 ---
 
 <Base>
-  <header class="hero" id="top">
-    <nav class="nav" id="nav">
-      <button class="nav-left nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span class="hamburger"></span>
-        <span class="menu-label">Menu</span>
-      </button>
-      <a class="nav-center" href="#top">
-        <img src="/images/logo.svg" alt="vult" class="nav-logo" />
-        <span class="logo-text">vult</span>
-      </a>
-      <a class="nav-right" href="#contact" aria-label="Search">⌕</a>
-    </nav>
-
-    <!-- Mobile menu overlay -->
-    <div class="mobile-menu" id="mobile-menu">
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <div class="hero-content">
-      <h1>Make it undeniable.</h1>
-      <p class="lead">
-        vult builds cinematic litigation visuals that turn complex accidents, injuries,
-        and technical failures into clear visual evidence.
-      </p>
-      <p class="sublead">
-        Accurate to the data.<br />
-        Structured for the courtroom.
-      </p>
-      <a class="cta" href="#contact">Get started</a>
-    </div>
-
-    <div class="hero-overlay"></div>
-    <div class="hero-bg"></div>
-  </header>
+  <Nav />
+  <Hero />
 
   <main>
     <!-- Work Overview -->
@@ -68,155 +41,15 @@ import Base from "../layouts/Base.astro";
       </div>
     </section>
 
-    <!-- Scene -->
-    <section class="section">
-      <div class="grid two flip">
-        <div class="copy">
-          <div class="kicker">Work</div>
-          <h3>Scene.</h3>
-          <ul class="mini">
-            <li>Scene</li>
-            <li>Motion</li>
-            <li>Medical</li>
-            <li>Trial Delivery</li>
-          </ul>
-          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
-        </div>
+    <WorkSection title="Scene." items={serviceItems} variant="scene" flip />
+    <WorkSection title="Motion." items={serviceItems} variant="motion" />
+    <WorkSection title="Medical." items={serviceItems} variant="medical" flip />
+    <WorkSection title="Trial Delivery." items={serviceItems} variant="trial" />
 
-        <div class="card media">
-          <div class="media-placeholder scene"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Motion -->
-    <section class="section">
-      <div class="grid two">
-        <div class="card media">
-          <div class="media-placeholder motion"></div>
-        </div>
-
-        <div class="copy">
-          <div class="kicker">Work</div>
-          <h3>Motion.</h3>
-          <ul class="mini">
-            <li>Scene</li>
-            <li>Motion</li>
-            <li>Medical</li>
-            <li>Trial Delivery</li>
-          </ul>
-          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Medical -->
-    <section class="section">
-      <div class="grid two flip">
-        <div class="copy">
-          <div class="kicker">Work</div>
-          <h3>Medical.</h3>
-          <ul class="mini">
-            <li>Scene</li>
-            <li>Motion</li>
-            <li>Medical</li>
-            <li>Trial Delivery</li>
-          </ul>
-          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
-        </div>
-
-        <div class="card media">
-          <div class="media-placeholder medical"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Trial Delivery -->
-    <section class="section">
-      <div class="grid two">
-        <div class="card media">
-          <div class="media-placeholder trial"></div>
-        </div>
-
-        <div class="copy">
-          <div class="kicker">Work</div>
-          <h3>Trial Delivery.</h3>
-          <ul class="mini">
-            <li>Scene</li>
-            <li>Motion</li>
-            <li>Medical</li>
-            <li>Trial Delivery</li>
-          </ul>
-          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-      <div class="footer-inner">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <div class="footer-links">
-              <a href="#work">Team</a>
-              <a href="#work">Cases</a>
-              <a href="#contact">Contact</a>
-            </div>
-            <div class="fineprint">
-              &copy; 2026 vult systems, LLC.<br />
-              All rights reserved. <a href="#">Privacy Policy</a>
-            </div>
-          </div>
-
-          <div class="footer-col">
-            <div class="footer-title">More vult</div>
-            <div class="footer-links dim">
-              <a href="https://www.linkedin.com/company/vultlabs" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://www.instagram.com/vultlabs" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://www.youtube.com/@vultlabs" target="_blank" rel="noopener noreferrer">YouTube</a>
-            </div>
-          </div>
-
-          <div class="footer-col wide">
-            <div class="footer-title">Want more vult?</div>
-            <p class="footer-text">
-              Get our emails. Letters from our team, new work, behind the scenes,
-              and more. Not too often — just enough.
-            </p>
-
-            <form class="signup" action="https://formsubmit.co/ops.vult@gmail.com" method="POST">
-              <input type="text" name="_honey" style="display:none" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://vultlabs.com/" />
-              <input type="email" name="email" placeholder="Email" required autocomplete="email" />
-              <button type="submit">Sign Up</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </main>
 
   <script>
-    // Mobile nav toggle
-    const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
-    const menu = document.getElementById('mobile-menu') as HTMLElement;
-
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      menu.classList.toggle('open');
-    });
-
-    // Close mobile menu on link click
-    menu?.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        menu.classList.remove('open');
-      });
-    });
-
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
@@ -227,12 +60,6 @@ import Base from "../layouts/Base.astro";
           target.scrollIntoView({ behavior: 'smooth' });
         }
       });
-    });
-
-    // Nav background on scroll
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav?.classList.toggle('scrolled', window.scrollY > 60);
     });
   </script>
 </Base>
