@@ -18,33 +18,46 @@
   <span class="hamburger"></span>
 </button>
 
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#work">Work</a>
-  <a href="#contact">Contact</a>
+<div class="side-menu-overlay" id="side-menu-overlay"></div>
+<div class="side-menu" id="side-menu">
+  <button class="side-menu-close" id="side-menu-close" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    <span>Close</span>
+  </button>
+  <nav class="side-menu-links">
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </div>
 
 <script>
   const navToggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
   const floatingToggle = document.getElementById('floating-hamburger') as HTMLButtonElement;
-  const menu = document.getElementById('mobile-menu') as HTMLElement;
+  const sideMenu = document.getElementById('side-menu') as HTMLElement;
+  const sideOverlay = document.getElementById('side-menu-overlay') as HTMLElement;
+  const sideClose = document.getElementById('side-menu-close') as HTMLButtonElement;
 
-  function toggleMenu(btn: HTMLButtonElement) {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    const newState = String(!expanded);
-    navToggle.setAttribute('aria-expanded', newState);
-    floatingToggle.setAttribute('aria-expanded', newState);
-    menu.classList.toggle('open');
+  function openMenu() {
+    sideMenu.classList.add('open');
+    sideOverlay.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    floatingToggle.setAttribute('aria-expanded', 'true');
   }
 
-  navToggle?.addEventListener('click', () => toggleMenu(navToggle));
-  floatingToggle?.addEventListener('click', () => toggleMenu(floatingToggle));
+  function closeMenu() {
+    sideMenu.classList.remove('open');
+    sideOverlay.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    floatingToggle.setAttribute('aria-expanded', 'false');
+  }
 
-  menu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.setAttribute('aria-expanded', 'false');
-      floatingToggle.setAttribute('aria-expanded', 'false');
-      menu.classList.remove('open');
-    });
+  navToggle?.addEventListener('click', openMenu);
+  floatingToggle?.addEventListener('click', openMenu);
+  sideClose?.addEventListener('click', closeMenu);
+  sideOverlay?.addEventListener('click', closeMenu);
+
+  sideMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 
   // Scroll behavior

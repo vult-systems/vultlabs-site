@@ -165,37 +165,84 @@ img { max-width: 100%; display: block; }
 
 .nav.nav-solid .nav-right { color: rgba(0,0,0,.8); }
 
-/* Mobile menu overlay */
-.mobile-menu {
+/* Side menu panel — A24-style left drawer */
+.side-menu {
   position: fixed;
-  inset: 0;
-  z-index: 99;
+  top: 0; left: 0; bottom: 0;
+  width: min(420px, 85vw);
+  z-index: 200;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 28px;
+  padding: 44px 48px;
   background: rgba(10,12,15,.97);
   backdrop-filter: blur(16px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s;
+  transform: translateX(-100%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
 }
 
-.mobile-menu.open {
-  opacity: 1;
-  pointer-events: auto;
+.side-menu.open {
+  transform: translateX(0);
 }
 
-.mobile-menu a {
-  font-size: 18px;
-  letter-spacing: .10em;
+.side-menu-close {
+  position: absolute;
+  top: 44px; left: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.8);
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.85);
+  font-family: var(--sans);
+  padding: 0;
+}
+
+.side-menu-close:hover { color: #fff; }
+
+.side-menu-close svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.side-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.side-menu-links a {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: rgba(255,255,255,.9);
   transition: color .2s;
 }
 
-.mobile-menu a:hover { color: #fff; }
+.side-menu-links a:hover { color: #fff; }
+
+/* Overlay behind side menu */
+.side-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(0,0,0,.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+}
+
+.side-menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* ---- HERO ---- */
 
