@@ -522,11 +522,11 @@ h3 a:hover {
 
 .arrow:hover { color: var(--ink); }
 
-.arrow span { margin-left: 12px; }
+.arrow span { margin-left: 14px; }
 
 .arrow-icon {
-  width: 48px;
-  height: 14px;
+  width: 96px;
+  height: 28px;
   flex-shrink: 0;
 }
 
