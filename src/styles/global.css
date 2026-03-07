@@ -378,7 +378,7 @@ h1 {
 }
 
 .grid {
-  width: min(1320px, calc(100% - 112px));
+  width: min(1440px, calc(100% - 112px));
   margin: 0 auto;
   display: grid;
   gap: 56px;
@@ -503,7 +503,7 @@ h3 a:hover {
 .arrow {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   font-size: 16px;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -513,29 +513,17 @@ h3 a:hover {
 
 .arrow:hover { color: var(--ink); }
 
-.arrow-line {
-  display: inline-block;
-  position: relative;
-  width: 64px;
-  height: 1.5px;
-  background: currentColor;
+.arrow svg {
+  width: 56px;
+  height: auto;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
   transition: width .35s cubic-bezier(.25,.1,.25,1);
 }
 
-.arrow-line::after {
-  content: "";
-  position: absolute;
-  right: -1px;
-  top: 50%;
-  width: 14px;
-  height: 14px;
-  border-top: 1.5px solid currentColor;
-  border-right: 1.5px solid currentColor;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.arrow:hover .arrow-line {
-  width: 28px;
+.arrow:hover svg {
+  width: 32px;
 }
 
 /* ---- FOOTER ---- */
