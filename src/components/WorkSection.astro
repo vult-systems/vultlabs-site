@@ -10,7 +10,7 @@ const { title, items, variant, flip = false } = Astro.props;
 ---
 
 <section class="section">
-  <div class={`grid two${flip ? ' flip' : ''}`}>
+  <div class:list={["grid", "two", { flip }]}>
     {flip ? (
       <Fragment>
         <div class="copy">

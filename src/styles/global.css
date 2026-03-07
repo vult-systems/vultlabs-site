@@ -40,8 +40,6 @@ img { max-width: 100%; display: block; }
   justify-content: space-between;
   padding: 24px 36px;
   font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
   color: rgba(255,255,255,.8);
   transition: background .3s, padding .3s;
 }
@@ -101,8 +99,9 @@ img { max-width: 100%; display: block; }
   gap: 10px;
   font-weight: 600;
   color: #fff;
-  letter-spacing: .02em;
+  letter-spacing: .04em;
   font-size: 14px;
+  text-transform: none;
 }
 
 .nav-logo { height: 22px; width: auto; }
