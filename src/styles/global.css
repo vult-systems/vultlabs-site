@@ -97,6 +97,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 10px;
+  font-family: var(--serif);
   font-weight: 600;
   color: #fff;
   letter-spacing: .04em;
