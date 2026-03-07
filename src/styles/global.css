@@ -771,7 +771,7 @@ h3 a:hover {
 }
 
 .wd-label {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: rgba(0,0,0,.45);
@@ -780,7 +780,7 @@ h3 a:hover {
 
 .wd-value {
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
   color: var(--ink);
@@ -854,7 +854,6 @@ h3 a:hover {
   margin: 0 auto;
   font-family: var(--serif);
   font-size: 18px;
-  font-weight: 700;
   line-height: 1.75;
   color: rgba(0,0,0,.7);
   text-align: left;
@@ -864,10 +863,15 @@ h3 a:hover {
   max-width: 680px;
   margin: 24px auto 0;
   font-family: var(--serif);
-  font-size: 14px;
+  font-size: 18px;
   font-style: italic;
   color: rgba(0,0,0,.45);
   text-align: left;
+}
+
+.wd-desc-inner .arrow {
+  max-width: 680px;
+  margin: 32px auto 0;
 }
 
 /* Gallery section */
