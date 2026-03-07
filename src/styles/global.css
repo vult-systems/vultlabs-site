@@ -143,20 +143,14 @@ img { max-width: 100%; display: block; }
 .nav-center {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-family: var(--serif);
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: .04em;
-  font-size: 22px;
-  text-transform: none;
-  transition: color .3s;
 }
 
 .nav.nav-solid .nav-center { color: rgba(0,0,0,.9); }
 
 .nav-logo { height: 30px; width: auto; }
-.logo-text { letter-spacing: .02em; }
+.nav-logo-blk { display: none; }
+.nav.nav-solid .nav-logo-wht { display: none; }
+.nav.nav-solid .nav-logo-blk { display: block; }
 
 .nav-right {
   opacity: .7;
