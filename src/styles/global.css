@@ -504,7 +504,7 @@ h3 a:hover {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: rgba(0,0,0,.7);
@@ -525,7 +525,7 @@ h3 a:hover {
 .arrow-line::after {
   content: "";
   position: absolute;
-  right: 0;
+  right: -1px;
   top: 50%;
   width: 14px;
   height: 14px;
