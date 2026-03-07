@@ -81,6 +81,28 @@
   </div>
 </div>
 
+<!-- Hidden form for FormSubmit (supports multipart/file uploads) -->
+<form
+  id="caseHiddenForm"
+  action="https://formsubmit.co/ops.vult@gmail.com"
+  method="POST"
+  enctype="multipart/form-data"
+  target="caseSubmitFrame"
+  style="display:none"
+>
+  <input type="text" name="_honey" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_next" value="about:blank" />
+  <input type="hidden" name="_subject" value="" />
+  <input type="hidden" name="email" />
+  <input type="hidden" name="First Name" />
+  <input type="hidden" name="Last Name" />
+  <input type="hidden" name="Organization" />
+  <input type="hidden" name="Case Type" />
+  <input type="hidden" name="Case Overview" />
+</form>
+<iframe name="caseSubmitFrame" id="caseSubmitFrame" style="display:none" tabindex="-1"></iframe>
+
 <script>
   function initModal() {
     const backdrop = document.getElementById('caseModal');
@@ -187,8 +209,8 @@
       }
     });
 
-    // Submit
-    submitBtn?.addEventListener('click', async () => {
+    // Submit via hidden form (supports file attachments)
+    submitBtn?.addEventListener('click', () => {
       const email = (backdrop!.querySelector('input[name="email"]') as HTMLInputElement)?.value;
       const firstName = (backdrop!.querySelector('input[name="firstName"]') as HTMLInputElement)?.value;
       const lastName = (backdrop!.querySelector('input[name="lastName"]') as HTMLInputElement)?.value;
@@ -199,34 +221,41 @@
       submitBtn.textContent = 'Sending...';
       (submitBtn as HTMLButtonElement).disabled = true;
 
-      try {
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('First Name', firstName);
-        formData.append('Last Name', lastName);
-        formData.append('Organization', organization);
-        formData.append('Case Type', caseType);
-        formData.append('Case Overview', caseOverview);
-        formData.append('_captcha', 'false');
-        formData.append('_subject', `Case Inquiry: ${caseType || 'New'} — ${firstName} ${lastName}`);
+      const form = document.getElementById('caseHiddenForm') as HTMLFormElement;
+      (form.querySelector('[name="email"]') as HTMLInputElement).value = email;
+      (form.querySelector('[name="First Name"]') as HTMLInputElement).value = firstName;
+      (form.querySelector('[name="Last Name"]') as HTMLInputElement).value = lastName;
+      (form.querySelector('[name="Organization"]') as HTMLInputElement).value = organization;
+      (form.querySelector('[name="Case Type"]') as HTMLInputElement).value = caseType;
+      (form.querySelector('[name="Case Overview"]') as HTMLInputElement).value = caseOverview;
+      (form.querySelector('[name="_subject"]') as HTMLInputElement).value =
+        `Case Inquiry: ${caseType || 'New'} — ${firstName} ${lastName}`;
 
-        const fileInput = backdrop!.querySelector('input[type="file"]') as HTMLInputElement;
-        if (fileInput?.files?.length) {
-          formData.append('attachment', fileInput.files[0]);
+      // Move the file input into the hidden form for submission
+      const modalFileInput = backdrop!.querySelector('input[type="file"]') as HTMLInputElement;
+      const existingFile = form.querySelector('input[name="attachment"]');
+      if (existingFile) existingFile.remove();
+      if (modalFileInput?.files?.length) {
+        const clone = modalFileInput.cloneNode(true) as HTMLInputElement;
+        // DataTransfer to copy files
+        const dt = new DataTransfer();
+        for (let i = 0; i < modalFileInput.files.length; i++) {
+          dt.items.add(modalFileInput.files[i]);
         }
+        clone.files = dt.files;
+        clone.name = 'attachment';
+        clone.style.display = 'none';
+        form.appendChild(clone);
+      }
 
-        await fetch('https://formsubmit.co/ajax/ops.vult@gmail.com', {
-          method: 'POST',
-          body: formData,
-        });
+      form.submit();
 
+      // Show confirmation after a brief delay
+      setTimeout(() => {
         showStep(5);
-      } catch {
-        showStep(5);
-      } finally {
         submitBtn.textContent = 'Submit Case';
         (submitBtn as HTMLButtonElement).disabled = false;
-      }
+      }, 800);
     });
   }
 
