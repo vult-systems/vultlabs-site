@@ -623,11 +623,7 @@ h3 a:hover {
 .footer .arrow-icon { filter: invert(1); }
 
 .footer-cta {
-  font-size: 13px;
-}
-.footer-cta .arrow-icon {
-  width: 56px;
-  height: 18px;
+  color: var(--accent);
 }
 
 .signup {
