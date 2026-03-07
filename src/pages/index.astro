@@ -5,29 +5,33 @@ import Base from "../layouts/Base.astro";
 <Base>
   <header class="hero" id="top">
     <nav class="nav" id="nav">
-      <a class="nav-logo" href="#top">
+      <button class="nav-left nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+        <span class="menu-label">Menu</span>
+      </button>
+      <a class="nav-center" href="#top">
         <span class="logo-mark">▲</span><span class="logo-text">Vult</span>
       </a>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#approach">Approach</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="hamburger"></span>
-      </button>
+      <a class="nav-right" href="#contact" aria-label="Search">⌕</a>
     </nav>
 
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+
     <div class="hero-content">
-      <h1>Make it<br />undeniable.</h1>
+      <h1>Make it undeniable.</h1>
       <p class="lead">
-        Cinematic litigation visuals that turn complex accidents, injuries,
+        Vult builds cinematic litigation visuals that turn complex accidents, injuries,
         and technical failures into clear visual evidence.
       </p>
       <p class="sublead">
-        Accurate to the data. Structured for the courtroom.
+        Accurate to the data.<br />
+        Structured for the courtroom.
       </p>
-      <a class="btn" href="#contact">Start a project</a>
+      <a class="cta" href="#contact">Get started</a>
     </div>
 
     <div class="hero-overlay"></div>
@@ -35,155 +39,158 @@ import Base from "../layouts/Base.astro";
   </header>
 
   <main>
-    <!-- Services -->
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-header">
-          <span class="kicker">Services</span>
-          <h2>The difference is in&nbsp;the&nbsp;frame.</h2>
+    <!-- Work Overview -->
+    <section class="section" id="work">
+      <div class="grid two">
+        <div class="card media">
+          <div class="work-grid">
+            <div class="work-thumb"></div>
+            <div class="work-thumb"></div>
+            <div class="work-thumb"></div>
+            <div class="work-thumb"></div>
+            <div class="work-thumb"></div>
+            <div class="work-thumb"></div>
+          </div>
         </div>
 
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
-            </div>
-            <h3>Scene Reconstruction</h3>
-            <p>Photorealistic 3D environments built from police reports, survey data, and site photography. Every measurement verified, every detail defensible.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-            </div>
-            <h3>Motion &amp; Animation</h3>
-            <p>Frame-by-frame recreations of vehicle collisions, mechanical failures, and incident timelines. Timed to real-world physics and event data.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            </div>
-            <h3>Medical Visualization</h3>
-            <p>Anatomically accurate illustrations and animations of injuries, surgical procedures, and mechanisms of harm. Grounded in clinical records.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            </div>
-            <h3>Trial Delivery</h3>
-            <p>Presentation-ready packages optimized for courtroom display. Interactive timelines, annotated exhibits, and seamless playback systems.</p>
-          </div>
+        <div class="copy">
+          <div class="kicker">Work</div>
+          <h2>The difference is in the frame.</h2>
+          <ul class="bullets">
+            <li>Cinematic discipline.</li>
+            <li>Measured animation.</li>
+            <li>Intentional lighting.</li>
+            <li>Accurate reconstruction.</li>
+          </ul>
+          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
         </div>
       </div>
     </section>
 
-    <!-- Approach -->
-    <section class="section section-dark" id="approach">
-      <div class="container">
-        <div class="section-header light">
-          <span class="kicker">Approach</span>
-          <h2>Built for the courtroom,<br />not the&nbsp;showroom.</h2>
+    <!-- Scene -->
+    <section class="section">
+      <div class="grid two flip">
+        <div class="copy">
+          <div class="kicker">Work</div>
+          <h3>Scene.</h3>
+          <ul class="mini">
+            <li>Scene</li>
+            <li>Motion</li>
+            <li>Medical</li>
+            <li>Trial Delivery</li>
+          </ul>
+          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
         </div>
 
-        <div class="approach-grid">
-          <div class="approach-item">
-            <span class="approach-number">01</span>
-            <h4>Cinematic Discipline</h4>
-            <p>Every frame composed with intention. Camera angles, lighting, and pacing chosen to communicate — not to dazzle.</p>
-          </div>
-          <div class="approach-item">
-            <span class="approach-number">02</span>
-            <h4>Measured Animation</h4>
-            <p>Velocities, distances, and timing drawn directly from case data. Nothing invented, nothing assumed.</p>
-          </div>
-          <div class="approach-item">
-            <span class="approach-number">03</span>
-            <h4>Intentional Lighting</h4>
-            <p>Matched to time-of-day, weather conditions, and environmental context pulled from the record.</p>
-          </div>
-          <div class="approach-item">
-            <span class="approach-number">04</span>
-            <h4>Accurate Reconstruction</h4>
-            <p>Built from engineering reports, EDR data, medical records, and expert testimony. Defensible at deposition.</p>
-          </div>
+        <div class="card media">
+          <div class="media-placeholder scene"></div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-layout">
-          <div class="contact-copy">
-            <span class="kicker">Contact</span>
-            <h2>Start a conversation.</h2>
-            <p>Have a case that needs visual support? Tell us about the project and we'll respond within one business day.</p>
-          </div>
+    <!-- Motion -->
+    <section class="section">
+      <div class="grid two">
+        <div class="card media">
+          <div class="media-placeholder motion"></div>
+        </div>
 
-          <form class="contact-form" action="https://formsubmit.co/contact@vultlabs.com" method="POST">
-            <input type="text" name="_honey" style="display:none" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://vultlabs.com/#contact" />
+        <div class="copy">
+          <div class="kicker">Work</div>
+          <h3>Motion.</h3>
+          <ul class="mini">
+            <li>Scene</li>
+            <li>Motion</li>
+            <li>Medical</li>
+            <li>Trial Delivery</li>
+          </ul>
+          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
+        </div>
+      </div>
+    </section>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required autocomplete="name" />
-              </div>
-              <div class="form-group">
-                <label for="firm">Firm</label>
-                <input type="text" id="firm" name="firm" autocomplete="organization" />
-              </div>
-            </div>
+    <!-- Medical -->
+    <section class="section">
+      <div class="grid two flip">
+        <div class="copy">
+          <div class="kicker">Work</div>
+          <h3>Medical.</h3>
+          <ul class="mini">
+            <li>Scene</li>
+            <li>Motion</li>
+            <li>Medical</li>
+            <li>Trial Delivery</li>
+          </ul>
+          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
+        </div>
 
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required autocomplete="email" />
-            </div>
+        <div class="card media">
+          <div class="media-placeholder medical"></div>
+        </div>
+      </div>
+    </section>
 
-            <div class="form-group">
-              <label for="message">Tell us about your case</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
+    <!-- Trial Delivery -->
+    <section class="section">
+      <div class="grid two">
+        <div class="card media">
+          <div class="media-placeholder trial"></div>
+        </div>
 
-            <button type="submit" class="btn">Send message</button>
-          </form>
+        <div class="copy">
+          <div class="kicker">Work</div>
+          <h3>Trial Delivery.</h3>
+          <ul class="mini">
+            <li>Scene</li>
+            <li>Motion</li>
+            <li>Medical</li>
+            <li>Trial Delivery</li>
+          </ul>
+          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
         <div class="footer-grid">
           <div class="footer-col">
-            <a class="footer-logo" href="#top">
-              <span class="logo-mark">▲</span><span class="logo-text">Vult</span>
-            </a>
-            <p class="footer-tagline">Cinematic litigation visuals.</p>
-          </div>
-
-          <div class="footer-col">
-            <div class="footer-title">Navigate</div>
             <div class="footer-links">
-              <a href="#services">Services</a>
-              <a href="#approach">Approach</a>
+              <a href="#work">Team</a>
+              <a href="#work">Cases</a>
               <a href="#contact">Contact</a>
             </div>
+            <div class="fineprint">
+              &copy; 2026 Vult Systems, LLC.<br />
+              All rights reserved. <a href="#">Privacy Policy</a>
+            </div>
           </div>
 
           <div class="footer-col">
-            <div class="footer-title">Connect</div>
-            <div class="footer-links">
+            <div class="footer-title">More Vult</div>
+            <div class="footer-links dim">
               <a href="https://www.linkedin.com/company/vultlabs" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://www.instagram.com/vultlabs" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.youtube.com/@vultlabs" target="_blank" rel="noopener noreferrer">YouTube</a>
             </div>
           </div>
-        </div>
 
-        <div class="footer-bottom">
-          <p>&copy; 2026 Vult Systems, LLC. All rights reserved.</p>
+          <div class="footer-col wide">
+            <div class="footer-title">Want More Vult?</div>
+            <p class="footer-text">
+              Get our emails. Letters from our team, new work, behind the scenes,
+              and more. Not too often — just enough.
+            </p>
+
+            <form class="signup" action="https://formsubmit.co/ops.vult@gmail.com" method="POST">
+              <input type="text" name="_honey" style="display:none" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://vultlabs.com/" />
+              <input type="email" name="email" placeholder="Email" required autocomplete="email" />
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
         </div>
       </div>
     </footer>
@@ -192,19 +199,19 @@ import Base from "../layouts/Base.astro";
   <script>
     // Mobile nav toggle
     const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
-    const links = document.querySelector('.nav-links') as HTMLElement;
+    const menu = document.getElementById('mobile-menu') as HTMLElement;
 
     toggle?.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!expanded));
-      links.classList.toggle('open');
+      menu.classList.toggle('open');
     });
 
-    // Close mobile nav on link click
-    links?.querySelectorAll('a').forEach(link => {
+    // Close mobile menu on link click
+    menu?.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         toggle.setAttribute('aria-expanded', 'false');
-        links.classList.remove('open');
+        menu.classList.remove('open');
       });
     });
 
@@ -221,7 +228,7 @@ import Base from "../layouts/Base.astro";
       });
     });
 
-    // Shrink nav on scroll
+    // Nav background on scroll
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav?.classList.toggle('scrolled', window.scrollY > 60);
