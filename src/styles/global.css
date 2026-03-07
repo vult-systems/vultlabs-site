@@ -511,7 +511,7 @@ h3 a:hover {
 }
 
 .arrow {
-  font-size: 16px;
+  font-size: 28px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: rgba(0,0,0,.7);
@@ -520,7 +520,7 @@ h3 a:hover {
 
 .arrow:hover { color: var(--ink); }
 
-.arrow span { margin-left: 8px; }
+.arrow span { margin-left: 12px; }
 
 /* ---- FOOTER ---- */
 
