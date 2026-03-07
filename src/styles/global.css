@@ -533,6 +533,7 @@ h3 a:hover {
 
 .arrow {
   font-size: 16px;
+  font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink);
@@ -541,7 +542,7 @@ h3 a:hover {
   align-items: center;
 }
 
-.arrow:hover { opacity: .6; }
+.arrow:hover { opacity: 1; }
 
 .arrow span { margin-left: 14px; }
 
@@ -550,6 +551,10 @@ h3 a:hover {
   height: 28px;
   flex-shrink: 0;
 }
+
+.arrow .arrow-sht { display: none; }
+.arrow:hover .arrow-lng { display: none; }
+.arrow:hover .arrow-sht { display: block; }
 
 /* ---- FOOTER ---- */
 
