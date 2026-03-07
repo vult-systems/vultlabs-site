@@ -619,6 +619,9 @@ h3 a:hover {
   max-width: 520px;
 }
 
+.footer .arrow { color: #fff; }
+.footer .arrow-icon { filter: invert(1); }
+
 .signup {
   display: grid;
   grid-template-columns: 1fr 180px;
