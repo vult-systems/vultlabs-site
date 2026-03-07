@@ -4,9 +4,10 @@ interface Props {
   items: string[];
   variant: string;
   flip?: boolean;
+  href?: string;
 }
 
-const { title, items, variant, flip = false } = Astro.props;
+const { title, items, variant, flip = false, href } = Astro.props;
 ---
 
 <section class="section">
@@ -15,28 +16,28 @@ const { title, items, variant, flip = false } = Astro.props;
       <Fragment>
         <div class="copy">
           <div class="kicker">Work</div>
-          <h3>{title}</h3>
+          <h3>{href ? <a href={href}>{title}</a> : title}</h3>
           <ul class="mini">
             {items.map((item) => <li>{item}</li>)}
           </ul>
-          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
+          <a class="arrow" href={href || "#contact"}>⟶ <span>{href ? "View" : "Get Started"}</span></a>
         </div>
-        <div class="card media">
+        <a class="card media work-link" href={href || "#"}>
           <div class={`media-placeholder ${variant}`}></div>
-        </div>
+        </a>
       </Fragment>
     ) : (
       <Fragment>
-        <div class="card media">
+        <a class="card media work-link" href={href || "#"}>
           <div class={`media-placeholder ${variant}`}></div>
-        </div>
+        </a>
         <div class="copy">
           <div class="kicker">Work</div>
-          <h3>{title}</h3>
+          <h3>{href ? <a href={href}>{title}</a> : title}</h3>
           <ul class="mini">
             {items.map((item) => <li>{item}</li>)}
           </ul>
-          <a class="arrow" href="#contact">⟶ <span>Get Started</span></a>
+          <a class="arrow" href={href || "#contact"}>⟶ <span>{href ? "View" : "Get Started"}</span></a>
         </div>
       </Fragment>
     )}

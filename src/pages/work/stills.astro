@@ -1,0 +1,76 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav.astro";
+import WorkDetailHero from "../../components/WorkDetailHero.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Base title="Stills — Vult Labs" description="Cinematic litigation photography. Accident scenes, equipment failures, and environmental conditions captured with forensic precision.">
+  <Nav />
+  <WorkDetailHero title="Stills." variant="scene" />
+
+  <main>
+    <section class="wd-meta">
+      <div class="wd-meta-inner">
+        <div class="wd-meta-row">
+          <div>
+            <div class="wd-label">Service</div>
+            <div class="wd-value">Photography &<br />Visual Documentation</div>
+          </div>
+          <div>
+            <div class="wd-label">Deliverables</div>
+            <div class="wd-value">High-resolution stills<br />Scene reconstructions<br />Annotated exhibits</div>
+          </div>
+          <a class="wd-back" href="/#work">← Work</a>
+        </div>
+
+        <div class="wd-caps">
+          <div class="wd-caps-label">Capabilities</div>
+          <div class="wd-caps-grid">
+            <span>Cinematic stills</span>
+            <span>Forensic documentation</span>
+            <span>Annotated exhibits</span>
+            <span>Scene reconstruction</span>
+            <span>Expert collaboration</span>
+            <span>Courtroom-ready output</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wd-meta">
+      <div class="wd-meta-inner">
+        <div class="wd-divider"></div>
+      </div>
+    </section>
+
+    <section class="wd-desc">
+      <div class="wd-desc-inner">
+        <p class="wd-desc-text">
+          Cinematic litigation photography that captures accident scenes,
+          equipment failures, and environmental conditions with forensic
+          precision. Every still is built to be accurate, clear, and
+          courtroom-ready.
+        </p>
+      </div>
+    </section>
+
+    <section class="wd-gallery">
+      <div class="wd-gallery-inner">
+        <div class="wd-gallery-label">Selected Work</div>
+        <div class="wd-gallery-grid">
+          <div class="wd-gallery-item"></div>
+          <div class="wd-gallery-item"></div>
+          <div class="wd-gallery-item"></div>
+          <div class="wd-gallery-item"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wd-cta">
+      <a class="wd-cta-link" href="/#contact">⟶ <span>Get Started</span></a>
+    </div>
+
+    <Footer />
+  </main>
+</Base>

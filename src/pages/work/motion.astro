@@ -1,0 +1,76 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav.astro";
+import WorkDetailHero from "../../components/WorkDetailHero.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Base title="Motion — Vult Labs" description="Frame-by-frame accident reconstructions and technical animations built from verified data, timed to real-world physics.">
+  <Nav />
+  <WorkDetailHero title="Motion." variant="motion" />
+
+  <main>
+    <section class="wd-meta">
+      <div class="wd-meta-inner">
+        <div class="wd-meta-row">
+          <div>
+            <div class="wd-label">Service</div>
+            <div class="wd-value">Animation &<br />Video Production</div>
+          </div>
+          <div>
+            <div class="wd-label">Deliverables</div>
+            <div class="wd-value">3D animations<br />Video reconstructions<br />Motion graphics</div>
+          </div>
+          <a class="wd-back" href="/#work">← Work</a>
+        </div>
+
+        <div class="wd-caps">
+          <div class="wd-caps-label">Capabilities</div>
+          <div class="wd-caps-grid">
+            <span>3D reconstruction</span>
+            <span>Physics-based animation</span>
+            <span>Aerial mapping</span>
+            <span>Timeline visualization</span>
+            <span>Technical motion graphics</span>
+            <span>Courtroom-ready output</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wd-meta">
+      <div class="wd-meta-inner">
+        <div class="wd-divider"></div>
+      </div>
+    </section>
+
+    <section class="wd-desc">
+      <div class="wd-desc-inner">
+        <p class="wd-desc-text">
+          Frame-by-frame accident reconstructions and technical animations
+          that bring complex events to life. Built from verified data,
+          timed to real-world physics, and designed to make the
+          invisible undeniable.
+        </p>
+      </div>
+    </section>
+
+    <section class="wd-gallery">
+      <div class="wd-gallery-inner">
+        <div class="wd-gallery-label">Selected Work</div>
+        <div class="wd-gallery-grid">
+          <div class="wd-gallery-item"></div>
+          <div class="wd-gallery-item"></div>
+          <div class="wd-gallery-item"></div>
+          <div class="wd-gallery-item"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wd-cta">
+      <a class="wd-cta-link" href="/#contact">⟶ <span>Get Started</span></a>
+    </div>
+
+    <Footer />
+  </main>
+</Base>

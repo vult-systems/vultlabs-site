@@ -6,7 +6,7 @@
     <span class="hamburger"></span>
     <span class="menu-label">Menu</span>
   </button>
-  <a class="nav-center" href="#top">
+  <a class="nav-center" href="/">
     <img src="/images/logo-wht.svg" alt="Vult" class="nav-logo nav-logo-wht" />
     <img src="/images/logo-blk.svg" alt="Vult" class="nav-logo nav-logo-blk" />
   </a>
@@ -34,8 +34,8 @@
 <div class="side-menu-overlay" id="side-menu-overlay"></div>
 <div class="side-menu" id="side-menu">
   <nav class="side-menu-links">
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
+    <a href="/#work">Work</a>
+    <a href="/#contact">Contact</a>
   </nav>
 </div>
 
@@ -102,7 +102,7 @@
 
   // Scroll behavior
   const nav = document.getElementById('nav') as HTMLElement;
-  const hero = document.querySelector('.hero') as HTMLElement;
+  const hero = (document.querySelector('.hero') || document.querySelector('.wd-hero')) as HTMLElement;
   let lastScrollY = 0;
   let ticking = false;
 

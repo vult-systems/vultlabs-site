@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  variant: string;
+}
+
+const { title, variant } = Astro.props;
+---
+
+<section class={`wd-hero ${variant}`}>
+  <div class="wd-hero-overlay"></div>
+  <div class="wd-hero-title">
+    <h1 class="wd-title">{title}</h1>
+  </div>
+</section>
