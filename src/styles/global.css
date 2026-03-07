@@ -403,15 +403,19 @@ h1 {
 .card.media {
   padding: 32px;
   background: #e5e5e5;
+  overflow: hidden;
 }
 
 a.card.media.work-link {
   display: block;
-  transition: opacity .2s;
 }
 
-a.card.media.work-link:hover {
-  opacity: .85;
+a.card.media.work-link .media-placeholder {
+  transition: transform .5s cubic-bezier(.25,.1,.25,1);
+}
+
+a.card.media.work-link:hover .media-placeholder {
+  transform: scale(1.04);
 }
 
 /* Work thumbnail grid */

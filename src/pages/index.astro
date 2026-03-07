@@ -5,7 +5,8 @@ import Hero from "../components/Hero.astro";
 import WorkSection from "../components/WorkSection.astro";
 import Footer from "../components/Footer.astro";
 
-const serviceItems = ["Scene", "Motion", "Medical", "Trial Delivery"];
+const crashItems = ["Stills", "Motion"];
+const medicalItems = ["Stills", "Motion"];
 ---
 
 <Base>
@@ -41,10 +42,8 @@ const serviceItems = ["Scene", "Motion", "Medical", "Trial Delivery"];
       </div>
     </section>
 
-    <WorkSection title="Stills." items={serviceItems} variant="scene" href="/work/stills" flip />
-    <WorkSection title="Motion." items={serviceItems} variant="motion" href="/work/motion" />
-    <WorkSection title="Medical." items={serviceItems} variant="medical" href="/work/medical" flip />
-    <WorkSection title="Trial Delivery." items={serviceItems} variant="trial" href="/work/trial-delivery" />
+    <WorkSection title="Crash." items={crashItems} variant="scene" href="/work/crash" flip />
+    <WorkSection title="Medical." items={medicalItems} variant="medical" href="/work/medical" />
 
     <Footer />
   </main>
