@@ -390,7 +390,7 @@ h1 {
 }
 
 .grid.two.about {
-  grid-template-columns: 1.4fr .6fr;
+  grid-template-columns: 1.15fr .85fr;
 }
 
 .grid.two.about .card.media {
