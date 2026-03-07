@@ -380,10 +380,10 @@ h1 {
 }
 
 .grid {
-  width: min(1200px, calc(100% - 112px));
+  width: min(1320px, calc(100% - 112px));
   margin: 0 auto;
   display: grid;
-  gap: 48px;
+  gap: 56px;
 }
 
 .grid.two {
@@ -403,7 +403,7 @@ h1 {
 }
 
 .card.media {
-  padding: 26px;
+  padding: 32px;
   background: #e5e5e5;
 }
 
@@ -411,7 +411,7 @@ h1 {
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 14px;
 }
 
 .work-thumb {
@@ -422,7 +422,7 @@ h1 {
 
 /* Media placeholder sections */
 .media-placeholder {
-  height: 360px;
+  height: 440px;
   background: linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,.02));
   border: 1px solid rgba(0,0,0,.08);
 }
