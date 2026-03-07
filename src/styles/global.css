@@ -860,6 +860,16 @@ h3 a:hover {
   text-align: left;
 }
 
+.wd-desc-credit {
+  max-width: 680px;
+  margin: 24px auto 0;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(0,0,0,.45);
+  text-align: left;
+}
+
 /* Gallery section */
 .wd-gallery {
   padding: 0 0 100px;
