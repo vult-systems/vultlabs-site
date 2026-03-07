@@ -352,10 +352,15 @@ h1 {
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--accent);
-  transition: color .2s;
+  border: 1px solid var(--accent);
+  padding: 14px 32px;
+  transition: background .3s, color .3s;
 }
 
-.cta:hover { color: #daa636; }
+.cta:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
 
 .hero-arrow { color: #fff; }
 .hero-arrow .arrow-icon { filter: invert(1); }
