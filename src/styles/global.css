@@ -527,15 +527,15 @@ h3 a:hover {
   position: absolute;
   right: 0;
   top: 50%;
-  width: 10px;
-  height: 10px;
-  border-top: 1px solid currentColor;
-  border-right: 1px solid currentColor;
+  width: 14px;
+  height: 14px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
   transform: translateY(-50%) rotate(45deg);
 }
 
 .arrow:hover .arrow-line {
-  width: 40px;
+  width: 28px;
 }
 
 /* ---- FOOTER ---- */
