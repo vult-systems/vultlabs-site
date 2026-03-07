@@ -390,7 +390,7 @@ h1 {
 }
 
 .grid.two.about {
-  grid-template-columns: 1.15fr .85fr;
+  grid-template-columns: 1.25fr .75fr;
 }
 
 .grid.two.about .card.media {
@@ -406,7 +406,7 @@ h1 {
 
 .card {
   background: #ddd;
-  border: 1px solid rgba(0,0,0,.08);
+  border: none;
 }
 
 .card.media {
