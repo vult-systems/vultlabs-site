@@ -34,7 +34,7 @@ img { max-width: 100%; display: block; }
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 201;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,6 +76,7 @@ img { max-width: 100%; display: block; }
 .nav.nav-solid .nav-left { color: rgba(0,0,0,.85); }
 
 .hamburger,
+.hamburger::before,
 .hamburger::after {
   display: block;
   width: 20px;
@@ -85,6 +86,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav.nav-solid .hamburger,
+.nav.nav-solid .hamburger::before,
 .nav.nav-solid .hamburger::after {
   background: rgba(0,0,0,.85);
 }
@@ -93,7 +95,7 @@ img { max-width: 100%; display: block; }
 .floating-hamburger {
   position: fixed;
   top: 44px; left: 48px;
-  z-index: 101;
+  z-index: 202;
   display: none;
   align-items: center;
   background: none;
@@ -106,29 +108,35 @@ img { max-width: 100%; display: block; }
 .floating-hamburger.visible { display: flex; }
 .floating-hamburger.dark { color: rgba(0,0,0,.85); }
 .floating-hamburger .hamburger,
+.floating-hamburger .hamburger::before,
 .floating-hamburger .hamburger::after {
   background: rgba(255,255,255,.8);
 }
 .floating-hamburger.dark .hamburger,
+.floating-hamburger.dark .hamburger::before,
 .floating-hamburger.dark .hamburger::after {
   background: rgba(0,0,0,.85);
 }
 
 .hamburger { position: relative; }
 
+.hamburger::before,
 .hamburger::after {
   content: "";
   position: absolute;
   left: 0;
 }
 
+.hamburger::before { top: -6px; }
 .hamburger::after  { top:  6px; }
 
 /* X animation when menu is open */
-.nav-toggle[aria-expanded="true"] .hamburger { transform: rotate(45deg); }
-.nav-toggle[aria-expanded="true"] .hamburger::after { top: 0; transform: rotate(-90deg); }
-.floating-hamburger[aria-expanded="true"] .hamburger { transform: rotate(45deg); }
-.floating-hamburger[aria-expanded="true"] .hamburger::after { top: 0; transform: rotate(-90deg); }
+.nav-toggle[aria-expanded="true"] .hamburger { background: transparent; }
+.nav-toggle[aria-expanded="true"] .hamburger::before { top: 0; transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .hamburger::after  { top: 0; transform: rotate(-45deg); }
+.floating-hamburger[aria-expanded="true"] .hamburger { background: transparent; }
+.floating-hamburger[aria-expanded="true"] .hamburger::before { top: 0; transform: rotate(45deg); }
+.floating-hamburger[aria-expanded="true"] .hamburger::after  { top: 0; transform: rotate(-45deg); }
 
 .menu-label { opacity: .7; }
 
@@ -156,11 +164,96 @@ img { max-width: 100%; display: block; }
   color: rgba(255,255,255,.8);
   transition: opacity .2s, color .3s;
   transform: scaleX(-1);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
 }
 
 .nav-right:hover { opacity: 1; }
 
 .nav.nav-solid .nav-right { color: rgba(0,0,0,.8); }
+
+/* ---- SEARCH OVERLAY (A24-style) ---- */
+.search-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 300;
+  background: rgba(0,0,0,.97);
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.search-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.search-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 80px 48px 60px;
+}
+
+.search-close {
+  position: absolute;
+  top: 36px; right: 48px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  padding: 0;
+  transition: color .2s;
+}
+
+.search-close:hover { color: #fff; }
+
+.search-close svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  padding-bottom: 12px;
+}
+
+.search-field input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 18px;
+  letter-spacing: .04em;
+  padding: 0;
+}
+
+.search-field input::placeholder {
+  color: rgba(255,255,255,.3);
+}
+
+.search-field button {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  font-size: 22px;
+  padding: 0 0 0 16px;
+  transition: color .2s;
+}
+
+.search-field button:hover { color: #fff; }
 
 /* Side menu panel — A24-style left drawer */
 .side-menu {
