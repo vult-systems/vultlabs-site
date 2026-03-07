@@ -38,7 +38,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 52px 56px;
+  padding: 65px 56px;
   font-size: 14px;
   color: rgba(255,255,255,.8);
   background: transparent;
@@ -80,8 +80,8 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   justify-content: center;
   gap: 3px;
-  width: 22px;
-  height: 10px;
+  width: 26px;
+  height: 8px;
   position: relative;
 }
 
@@ -89,8 +89,8 @@ img { max-width: 100%; display: block; }
 .hamburger::after {
   content: "";
   display: block;
-  width: 22px;
-  height: 1.5px;
+  width: 26px;
+  height: 1px;
   background: rgba(255,255,255,.8);
   transition: transform .3s, top .3s, background .3s;
   position: absolute;
@@ -108,7 +108,7 @@ img { max-width: 100%; display: block; }
 /* Floating hamburger — icon only, always visible when nav hidden */
 .floating-hamburger {
   position: fixed;
-  top: 52px; left: 56px;
+  top: 65px; left: 56px;
   z-index: 202;
   display: none;
   align-items: center;
@@ -147,14 +147,14 @@ img { max-width: 100%; display: block; }
 
 .nav.nav-solid .nav-center { color: rgba(0,0,0,.9); }
 
-.nav-logo { height: 30px; width: auto; }
+.nav-logo { height: 24px; width: auto; }
 .nav-logo-blk { display: none; }
 .nav.nav-solid .nav-logo-wht { display: none; }
 .nav.nav-solid .nav-logo-blk { display: block; }
 
 .nav-right {
   opacity: .7;
-  font-size: 28px;
+  font-size: 24px;
   color: rgba(255,255,255,.8);
   transition: opacity .2s, color .3s;
   transform: scaleX(-1);
