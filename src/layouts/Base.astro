@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import CaseModal from "../components/CaseModal.astro";
 
 interface Props {
   title?: string;
@@ -38,5 +39,6 @@ const {
 
   <body>
     <slot />
+    <CaseModal />
   </body>
 </html>

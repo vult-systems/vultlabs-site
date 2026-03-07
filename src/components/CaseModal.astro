@@ -1,0 +1,234 @@
+---
+---
+
+<div class="modal-backdrop" id="caseModal" aria-hidden="true">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close">&times;</button>
+
+    <!-- Step 1: Email -->
+    <div class="modal-step active" data-step="1">
+      <h2 class="modal-title">Discuss Your Case</h2>
+      <p class="modal-desc">Enter your email to begin a case discussion with Vult.</p>
+      <div class="modal-fields">
+        <label class="modal-label">Email *</label>
+        <input class="modal-input" type="email" name="email" required autocomplete="email" placeholder="you@firm.com" />
+      </div>
+      <button class="modal-btn" data-next="2">Proceed</button>
+    </div>
+
+    <!-- Step 2: Contact -->
+    <div class="modal-step" data-step="2">
+      <h2 class="modal-title">Your Information</h2>
+      <div class="modal-fields">
+        <div class="modal-row">
+          <div class="modal-field-half">
+            <label class="modal-label">First Name</label>
+            <input class="modal-input" type="text" name="firstName" autocomplete="given-name" />
+          </div>
+          <div class="modal-field-half">
+            <label class="modal-label">Last Name</label>
+            <input class="modal-input" type="text" name="lastName" autocomplete="family-name" />
+          </div>
+        </div>
+        <label class="modal-label">Law Firm / Organization</label>
+        <input class="modal-input" type="text" name="organization" autocomplete="organization" />
+      </div>
+      <button class="modal-btn" data-next="3">Proceed</button>
+    </div>
+
+    <!-- Step 3: Case Type -->
+    <div class="modal-step" data-step="3">
+      <h2 class="modal-title">Case Type</h2>
+      <div class="modal-fields">
+        <div class="modal-options">
+          <label class="modal-option">
+            <input type="radio" name="caseType" value="Crash Reconstruction" />
+            <span>Crash Reconstruction</span>
+          </label>
+          <label class="modal-option">
+            <input type="radio" name="caseType" value="Medical Visualization" />
+            <span>Medical Visualization</span>
+          </label>
+          <label class="modal-option">
+            <input type="radio" name="caseType" value="Other" />
+            <span>Other</span>
+          </label>
+        </div>
+      </div>
+      <button class="modal-btn" data-next="4">Proceed</button>
+    </div>
+
+    <!-- Step 4: Case Overview -->
+    <div class="modal-step" data-step="4">
+      <h2 class="modal-title">Case Overview</h2>
+      <div class="modal-fields">
+        <label class="modal-label">Short description of the case or visualization needed.</label>
+        <textarea class="modal-input modal-textarea" name="caseOverview" rows="5"></textarea>
+        <label class="modal-label modal-label-upload">Supporting material (optional)</label>
+        <label class="modal-upload">
+          <input type="file" name="attachment" />
+          <span class="modal-upload-text">Choose file</span>
+        </label>
+      </div>
+      <button class="modal-btn" data-submit>Submit Case</button>
+    </div>
+
+    <!-- Confirmation -->
+    <div class="modal-step" data-step="5">
+      <h2 class="modal-title">Thank You</h2>
+      <p class="modal-desc">Your case inquiry has been received. A member of the Vult studio will follow up shortly.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initModal() {
+    const backdrop = document.getElementById('caseModal');
+    if (!backdrop) return;
+
+    const modal = backdrop.querySelector('.modal') as HTMLElement;
+    const closeBtn = backdrop.querySelector('.modal-close') as HTMLElement;
+    const steps = backdrop.querySelectorAll('.modal-step') as NodeListOf<HTMLElement>;
+    const nextBtns = backdrop.querySelectorAll('[data-next]') as NodeListOf<HTMLElement>;
+    const submitBtn = backdrop.querySelector('[data-submit]') as HTMLElement;
+    const uploadInput = backdrop.querySelector('input[type="file"]') as HTMLInputElement;
+    const uploadText = backdrop.querySelector('.modal-upload-text') as HTMLElement;
+
+    let currentStep = 1;
+
+    function showStep(n: number) {
+      steps.forEach(s => {
+        s.classList.remove('active', 'exit');
+      });
+      const current = backdrop!.querySelector(`[data-step="${currentStep}"]`) as HTMLElement;
+      const next = backdrop!.querySelector(`[data-step="${n}"]`) as HTMLElement;
+      if (current && n !== currentStep) {
+        current.classList.add('exit');
+      }
+      if (next) {
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            steps.forEach(s => s.classList.remove('active', 'exit'));
+            next.classList.add('active');
+            currentStep = n;
+            const firstInput = next.querySelector('input, textarea') as HTMLElement;
+            if (firstInput) firstInput.focus();
+          }, 200);
+        });
+      }
+    }
+
+    function openModal() {
+      backdrop!.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstInput = backdrop!.querySelector('.modal-step.active input') as HTMLElement;
+      if (firstInput) setTimeout(() => firstInput.focus(), 300);
+    }
+
+    function closeModal() {
+      backdrop!.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        steps.forEach(s => s.classList.remove('active', 'exit'));
+        const first = backdrop!.querySelector('[data-step="1"]') as HTMLElement;
+        if (first) first.classList.add('active');
+        currentStep = 1;
+        backdrop!.querySelectorAll('input:not([type="hidden"]):not([type="radio"]):not([type="file"]), textarea').forEach(
+          (el) => ((el as HTMLInputElement).value = '')
+        );
+        backdrop!.querySelectorAll('input[type="radio"]').forEach(
+          (el) => ((el as HTMLInputElement).checked = false)
+        );
+        if (uploadText) uploadText.textContent = 'Choose file';
+      }, 300);
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-open-modal="case"]').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // Close
+    closeBtn?.addEventListener('click', closeModal);
+    backdrop?.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && backdrop?.getAttribute('aria-hidden') === 'false') {
+        closeModal();
+      }
+    });
+
+    // Next step buttons
+    nextBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nextStep = parseInt(btn.getAttribute('data-next') || '1');
+
+        // Validate email on step 1
+        if (currentStep === 1) {
+          const emailInput = backdrop!.querySelector('input[name="email"]') as HTMLInputElement;
+          if (!emailInput.value || !emailInput.validity.valid) {
+            emailInput.focus();
+            return;
+          }
+        }
+
+        showStep(nextStep);
+      });
+    });
+
+    // File upload display
+    uploadInput?.addEventListener('change', () => {
+      if (uploadInput.files && uploadInput.files.length > 0 && uploadText) {
+        uploadText.textContent = uploadInput.files[0].name;
+      }
+    });
+
+    // Submit
+    submitBtn?.addEventListener('click', async () => {
+      const email = (backdrop!.querySelector('input[name="email"]') as HTMLInputElement)?.value;
+      const firstName = (backdrop!.querySelector('input[name="firstName"]') as HTMLInputElement)?.value;
+      const lastName = (backdrop!.querySelector('input[name="lastName"]') as HTMLInputElement)?.value;
+      const organization = (backdrop!.querySelector('input[name="organization"]') as HTMLInputElement)?.value;
+      const caseType = (backdrop!.querySelector('input[name="caseType"]:checked') as HTMLInputElement)?.value || '';
+      const caseOverview = (backdrop!.querySelector('textarea[name="caseOverview"]') as HTMLTextAreaElement)?.value;
+
+      submitBtn.textContent = 'Sending...';
+      (submitBtn as HTMLButtonElement).disabled = true;
+
+      try {
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('First Name', firstName);
+        formData.append('Last Name', lastName);
+        formData.append('Organization', organization);
+        formData.append('Case Type', caseType);
+        formData.append('Case Overview', caseOverview);
+        formData.append('_captcha', 'false');
+        formData.append('_subject', `Case Inquiry: ${caseType || 'New'} — ${firstName} ${lastName}`);
+
+        const fileInput = backdrop!.querySelector('input[type="file"]') as HTMLInputElement;
+        if (fileInput?.files?.length) {
+          formData.append('attachment', fileInput.files[0]);
+        }
+
+        await fetch('https://formsubmit.co/ajax/ops.vult@gmail.com', {
+          method: 'POST',
+          body: formData,
+        });
+
+        showStep(5);
+      } catch {
+        showStep(5);
+      } finally {
+        submitBtn.textContent = 'Submit Case';
+        (submitBtn as HTMLButtonElement).disabled = false;
+      }
+    });
+  }
+
+  initModal();
+</script>
