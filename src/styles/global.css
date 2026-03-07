@@ -786,6 +786,20 @@ h3 a:hover {
   color: var(--ink);
 }
 
+.wd-socials {
+  display: flex;
+  flex-direction: column;
+}
+
+.wd-socials a {
+  color: var(--ink);
+  transition: opacity .2s;
+}
+
+.wd-socials a:hover {
+  opacity: .55;
+}
+
 .wd-back {
   display: inline-flex;
   align-items: center;
