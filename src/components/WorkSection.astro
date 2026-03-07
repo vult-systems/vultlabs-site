@@ -18,7 +18,7 @@ const { title, description, variant, flip = false, href } = Astro.props;
           <div class="kicker">Work</div>
           <h3>{href ? <a href={href}>{title}</a> : title}</h3>
           <p class="section-desc">{description}</p>
-          <a class="arrow" href={href || "#contact"}>⟶ <span>{href ? "View" : "Get Started"}</span></a>
+          <a class="arrow" href={href || "#contact"}><span class="arrow-line"></span> {href ? "View" : "Get Started"}</a>
         </div>
         <a class="card media work-link" href={href || "#"}>
           <div class={`media-placeholder ${variant}`}></div>
@@ -33,7 +33,7 @@ const { title, description, variant, flip = false, href } = Astro.props;
           <div class="kicker">Work</div>
           <h3>{href ? <a href={href}>{title}</a> : title}</h3>
           <p class="section-desc">{description}</p>
-          <a class="arrow" href={href || "#contact"}>⟶ <span>{href ? "View" : "Get Started"}</span></a>
+          <a class="arrow" href={href || "#contact"}><span class="arrow-line"></span> {href ? "View" : "Get Started"}</a>
         </div>
       </Fragment>
     )}
