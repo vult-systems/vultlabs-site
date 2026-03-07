@@ -517,7 +517,7 @@ h3 a:hover {
   display: inline-block;
   position: relative;
   width: 64px;
-  height: 1px;
+  height: 1.5px;
   background: currentColor;
   transition: width .35s cubic-bezier(.25,.1,.25,1);
 }
