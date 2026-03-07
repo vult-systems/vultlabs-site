@@ -465,9 +465,17 @@ h2 {
 
 h3 {
   font-family: var(--serif);
-  font-size: clamp(42px, 5vw, 58px);
+  font-size: clamp(46px, 5.5vw, 64px);
   line-height: 1.05;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
+}
+
+h3 a {
+  transition: opacity .2s;
+}
+
+h3 a:hover {
+  opacity: .7;
 }
 
 .bullets {
@@ -485,15 +493,15 @@ h3 {
 }
 
 .section-desc {
-  margin: 0 0 22px;
+  margin: 0 0 28px;
   color: rgba(0,0,0,.55);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.75;
-  max-width: 480px;
+  max-width: 500px;
 }
 
 .arrow {
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: rgba(0,0,0,.7);
