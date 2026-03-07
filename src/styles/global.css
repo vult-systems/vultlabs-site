@@ -780,7 +780,7 @@ h3 a:hover {
 
 .wd-value {
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 1.4;
   color: var(--ink);
@@ -857,6 +857,10 @@ h3 a:hover {
   line-height: 1.75;
   color: rgba(0,0,0,.7);
   text-align: left;
+}
+
+.wd-desc-text + .wd-desc-text {
+  margin-top: 24px;
 }
 
 .wd-desc-credit {
