@@ -18,8 +18,8 @@
   <span class="hamburger"></span>
 </button>
 
-<!-- A24-style search overlay -->
-<div class="search-overlay" id="search-overlay">
+<!-- A24-style search bar — pushes page content down -->
+<div class="search-bar" id="search-bar">
   <button class="search-close" id="search-close" aria-label="Close search">
     <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
   </button>
@@ -48,20 +48,22 @@
 
   // Search
   const searchToggle = document.getElementById('search-toggle') as HTMLButtonElement;
-  const searchOverlay = document.getElementById('search-overlay') as HTMLElement;
+  const searchBar = document.getElementById('search-bar') as HTMLElement;
   const searchClose = document.getElementById('search-close') as HTMLButtonElement;
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
 
   searchToggle?.addEventListener('click', () => {
-    searchOverlay.classList.add('open');
-    setTimeout(() => searchInput?.focus(), 100);
+    searchBar.classList.toggle('open');
+    if (searchBar.classList.contains('open')) {
+      setTimeout(() => searchInput?.focus(), 200);
+    }
   });
   searchClose?.addEventListener('click', () => {
-    searchOverlay.classList.remove('open');
+    searchBar.classList.remove('open');
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && searchOverlay.classList.contains('open')) {
-      searchOverlay.classList.remove('open');
+    if (e.key === 'Escape' && searchBar.classList.contains('open')) {
+      searchBar.classList.remove('open');
     }
   });
 
