@@ -20,10 +20,6 @@
 
 <div class="side-menu-overlay" id="side-menu-overlay"></div>
 <div class="side-menu" id="side-menu">
-  <button class="side-menu-close" id="side-menu-close" aria-label="Close menu">
-    <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
-    <span>Close</span>
-  </button>
   <nav class="side-menu-links">
     <a href="#work">Work</a>
     <a href="#contact">Contact</a>
@@ -35,13 +31,14 @@
   const floatingToggle = document.getElementById('floating-hamburger') as HTMLButtonElement;
   const sideMenu = document.getElementById('side-menu') as HTMLElement;
   const sideOverlay = document.getElementById('side-menu-overlay') as HTMLElement;
-  const sideClose = document.getElementById('side-menu-close') as HTMLButtonElement;
+  const menuLabel = navToggle?.querySelector('.menu-label') as HTMLElement;
 
   function openMenu() {
     sideMenu.classList.add('open');
     sideOverlay.classList.add('open');
     navToggle.setAttribute('aria-expanded', 'true');
     floatingToggle.setAttribute('aria-expanded', 'true');
+    if (menuLabel) menuLabel.textContent = 'Close';
   }
 
   function closeMenu() {
@@ -49,11 +46,19 @@
     sideOverlay.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
     floatingToggle.setAttribute('aria-expanded', 'false');
+    if (menuLabel) menuLabel.textContent = 'Menu';
   }
 
-  navToggle?.addEventListener('click', openMenu);
-  floatingToggle?.addEventListener('click', openMenu);
-  sideClose?.addEventListener('click', closeMenu);
+  function toggleMenu() {
+    if (sideMenu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  navToggle?.addEventListener('click', toggleMenu);
+  floatingToggle?.addEventListener('click', toggleMenu);
   sideOverlay?.addEventListener('click', closeMenu);
 
   sideMenu?.querySelectorAll('a').forEach(link => {
