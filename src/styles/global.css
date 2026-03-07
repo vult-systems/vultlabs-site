@@ -385,12 +385,12 @@ h1 {
 }
 
 .grid.two {
-  grid-template-columns: 1.35fr .65fr;
+  grid-template-columns: 1fr 1fr;
   align-items: stretch;
 }
 
 .grid.two.flip {
-  grid-template-columns: .65fr 1.35fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 /* ---- CARDS & MEDIA ---- */
@@ -436,7 +436,7 @@ a.card.media.work-link:hover .work-grid {
 /* Media placeholder sections */
 .media-placeholder {
   height: 100%;
-  min-height: 620px;
+  min-height: 680px;
   background: linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,.02));
   border: 1px solid rgba(0,0,0,.08);
 }
@@ -511,9 +511,6 @@ h3 a:hover {
 }
 
 .arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
   font-size: 16px;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -523,11 +520,7 @@ h3 a:hover {
 
 .arrow:hover { color: var(--ink); }
 
-.arrow-icon {
-  font-size: 28px;
-  line-height: 1;
-  transition: letter-spacing .35s cubic-bezier(.25,.1,.25,1);
-}
+.arrow span { margin-left: 8px; }
 
 /* ---- FOOTER ---- */
 
