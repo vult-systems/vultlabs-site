@@ -1,13 +1,13 @@
 ---
 interface Props {
   title: string;
-  items: string[];
+  description: string;
   variant: string;
   flip?: boolean;
   href?: string;
 }
 
-const { title, items, variant, flip = false, href } = Astro.props;
+const { title, description, variant, flip = false, href } = Astro.props;
 ---
 
 <section class="section">
@@ -17,9 +17,7 @@ const { title, items, variant, flip = false, href } = Astro.props;
         <div class="copy">
           <div class="kicker">Work</div>
           <h3>{href ? <a href={href}>{title}</a> : title}</h3>
-          <ul class="mini">
-            {items.map((item) => <li>{item}</li>)}
-          </ul>
+          <p class="section-desc">{description}</p>
           <a class="arrow" href={href || "#contact"}>⟶ <span>{href ? "View" : "Get Started"}</span></a>
         </div>
         <a class="card media work-link" href={href || "#"}>
@@ -34,9 +32,7 @@ const { title, items, variant, flip = false, href } = Astro.props;
         <div class="copy">
           <div class="kicker">Work</div>
           <h3>{href ? <a href={href}>{title}</a> : title}</h3>
-          <ul class="mini">
-            {items.map((item) => <li>{item}</li>)}
-          </ul>
+          <p class="section-desc">{description}</p>
           <a class="arrow" href={href || "#contact"}>⟶ <span>{href ? "View" : "Get Started"}</span></a>
         </div>
       </Fragment>

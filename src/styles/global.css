@@ -482,6 +482,14 @@ h3 {
   line-height: 1.8;
 }
 
+.section-desc {
+  margin: 0 0 22px;
+  color: rgba(0,0,0,.55);
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 480px;
+}
+
 .arrow {
   font-size: 16px;
   letter-spacing: .14em;
