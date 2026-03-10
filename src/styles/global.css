@@ -1212,6 +1212,17 @@ h3 a:hover {
     grid-template-columns: 1fr;
   }
 
+  /* Work section mobile reorder: kicker → media → title → desc → arrow */
+  .grid.two .copy { display: contents; }
+  .grid.two .copy .kicker       { order: 1; }
+  .grid.two .card.media         { order: 2; }
+  .grid.two .copy h3            { order: 3; }
+  .grid.two .copy .section-desc { order: 4; }
+  .grid.two .copy .arrow        { order: 5; }
+
+  /* Preserve about copy as block (no media interleave) */
+  .grid.two.about .copy { display: flex; }
+
   .grid { width: calc(100% - 64px); }
 
   .card.media { padding: 32px; }
