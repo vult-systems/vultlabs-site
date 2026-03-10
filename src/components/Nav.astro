@@ -18,16 +18,17 @@
   <span class="hamburger"></span>
 </button>
 
-<!-- A24-style search bar — pushes page content down -->
+<!-- A24-style search bar - pushes page content down -->
 <div class="search-bar" id="search-bar">
   <button class="search-close" id="search-close" aria-label="Close search">
     <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
   </button>
   <div class="search-inner">
     <div class="search-field">
-      <input type="text" placeholder="Search" id="search-input" />
-      <button aria-label="Submit search">→</button>
+      <input type="text" placeholder="Search" id="search-input" autocomplete="off" />
+      <button aria-label="Submit search" id="search-submit">→</button>
     </div>
+    <div class="search-results" id="search-results"></div>
   </div>
 </div>
 
@@ -37,7 +38,7 @@
     <a href="/about">About</a>
     <a href="/work/crash">Crash</a>
     <a href="/work/medical">Medical</a>
-    <a href="/#contact">Contact</a>
+    <a href="/contact">Contact</a>
   </nav>
 </div>
 
@@ -53,19 +54,81 @@
   const searchBar = document.getElementById('search-bar') as HTMLElement;
   const searchClose = document.getElementById('search-close') as HTMLButtonElement;
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const searchResults = document.getElementById('search-results') as HTMLElement;
+  const searchSubmit = document.getElementById('search-submit') as HTMLButtonElement;
+
+  const pages = [
+    { title: 'Home', href: '/', keywords: ['home', 'vult', 'landing', 'studio'] },
+    { title: 'About', href: '/about', keywords: ['about', 'studio', 'team', 'who', 'vult'] },
+    { title: 'Crash Reconstruction', href: '/work/crash', keywords: ['crash', 'collision', 'vehicle', 'reconstruction', 'accident', 'dynamics', 'impact'] },
+    { title: 'Medical Visualization', href: '/work/medical', keywords: ['medical', 'anatomy', 'injury', 'surgical', 'visualization', 'procedure', 'treatment'] },
+    { title: 'Contact', href: '/contact', keywords: ['contact', 'case', 'inquiry', 'discuss', 'reach', 'email', 'form'] },
+    { title: 'Privacy Policy', href: '/privacy', keywords: ['privacy', 'policy', 'legal', 'terms'] },
+  ];
+
+  function filterPages(query: string) {
+    const q = query.toLowerCase().trim();
+    if (!q) return [];
+    return pages.filter(p =>
+      p.title.toLowerCase().includes(q) ||
+      p.keywords.some(k => k.includes(q))
+    );
+  }
+
+  function renderResults(results: typeof pages) {
+    if (!searchResults) return;
+    if (results.length === 0 && searchInput.value.trim()) {
+      searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+      return;
+    }
+    searchResults.innerHTML = results.map(r =>
+      `<a class="search-result" href="${r.href}">${r.title}</a>`
+    ).join('');
+  }
+
+  function navigateToFirst() {
+    const q = searchInput?.value.trim();
+    if (!q) return;
+    const results = filterPages(q);
+    if (results.length > 0) {
+      window.location.href = results[0].href;
+    }
+  }
+
+  searchInput?.addEventListener('input', () => {
+    renderResults(filterPages(searchInput.value));
+  });
+
+  searchInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      navigateToFirst();
+    }
+  });
+
+  searchSubmit?.addEventListener('click', () => {
+    navigateToFirst();
+  });
 
   searchToggle?.addEventListener('click', () => {
     searchBar.classList.toggle('open');
     if (searchBar.classList.contains('open')) {
       setTimeout(() => searchInput?.focus(), 200);
+    } else {
+      searchInput.value = '';
+      if (searchResults) searchResults.innerHTML = '';
     }
   });
   searchClose?.addEventListener('click', () => {
     searchBar.classList.remove('open');
+    searchInput.value = '';
+    if (searchResults) searchResults.innerHTML = '';
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && searchBar.classList.contains('open')) {
       searchBar.classList.remove('open');
+      searchInput.value = '';
+      if (searchResults) searchResults.innerHTML = '';
     }
   });
 
@@ -105,19 +168,30 @@
   // Scroll behavior
   const nav = document.getElementById('nav') as HTMLElement;
   const hero = (document.querySelector('.hero') || document.querySelector('.wd-hero')) as HTMLElement;
+  const noHero = !hero;
   let lastScrollY = 0;
   let ticking = false;
 
+  // Pages without a hero start with solid nav immediately
+  if (noHero) {
+    nav.classList.add('nav-solid');
+  }
+
   function onScroll() {
     const currentY = window.scrollY;
-    const heroBottom = hero ? hero.offsetHeight : 500;
+    const heroBottom = hero ? hero.offsetHeight : 0;
     const scrollingDown = currentY > lastScrollY;
-    const pastHero = currentY > heroBottom;
+    const pastHero = noHero || currentY > heroBottom;
 
-    if (currentY <= 60) {
+    if (currentY <= 60 && !noHero) {
       // At top: transparent nav, no hiding
       nav.classList.remove('nav-hidden', 'nav-solid');
       floatingToggle.classList.remove('visible', 'dark');
+    } else if (currentY <= 60 && noHero) {
+      // At top on no-hero page: solid nav
+      nav.classList.remove('nav-hidden');
+      nav.classList.add('nav-solid');
+      floatingToggle.classList.remove('visible');
     } else if (scrollingDown && currentY > 80) {
       // Scrolling down: hide nav, show floating hamburger
       nav.classList.add('nav-hidden');

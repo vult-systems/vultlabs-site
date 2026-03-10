@@ -5,7 +5,7 @@ import WorkDetailHero from "../../components/WorkDetailHero.astro";
 import Footer from "../../components/Footer.astro";
 ---
 
-<Base title="Medical — Vult Labs" description="Precise medical-legal visuals that translate injury data into clear, compelling courtroom evidence.">
+<Base title="Medical | Vult Labs" description="Precise medical-legal visuals that translate injury data into clear, compelling courtroom evidence.">
   <Nav />
   <WorkDetailHero title="Medical." variant="medical" />
 
@@ -14,27 +14,19 @@ import Footer from "../../components/Footer.astro";
       <div class="wd-meta-inner">
         <div class="wd-meta-row">
           <div>
-            <div class="wd-label">Category</div>
-            <div class="wd-value">Medical Visualization</div>
+            <div class="wd-label">Focus</div>
+            <div class="wd-value">Medical Visualization<br />Anatomical Reconstruction<br />Injury Mechanisms</div>
           </div>
           <div>
-            <div class="wd-label">Offerings</div>
-            <div class="wd-value">Stills<br />Motion</div>
+            <div class="wd-label">Motion</div>
+            <div class="wd-value">Injury mechanism animation<br />Anatomy in motion<br />Procedure explanation visuals<br />Step-by-step injury sequences</div>
           </div>
-          <a class="wd-back" href="/#work">← Work</a>
-        </div>
-
-        <div class="wd-caps">
-          <div class="wd-caps-label">Capabilities</div>
-          <div class="wd-caps-grid">
-            <span>Anatomical illustration</span>
-            <span>Surgical animation</span>
-            <span>Injury documentation</span>
-            <span>Skeletal modeling</span>
-            <span>Soft-tissue rendering</span>
-            <span>Courtroom-ready output</span>
+          <div>
+            <div class="wd-label">Stills</div>
+            <div class="wd-value">Anatomical injury frames<br />Medical exhibit visuals<br />Procedure illustrations<br />Injury detail diagrams</div>
           </div>
         </div>
+        <p class="wd-meta-note">Projects may include motion, stills, or a combination of both.</p>
       </div>
     </section>
 
@@ -47,29 +39,14 @@ import Footer from "../../components/Footer.astro";
     <section class="wd-desc">
       <div class="wd-desc-inner">
         <p class="wd-desc-text">
-          Precise medical-legal visuals that translate injury data into clear,
-          compelling courtroom evidence. From skeletal fractures to
-          soft-tissue damage, every detail is rendered with
-          clinical accuracy.
+          Medical visualizations translate anatomy and injury into clear visual explanations.
         </p>
+        <p class="wd-desc-text">
+          Working from medical records, imaging, and expert input, we create visuals that help attorneys and juries quickly understand what happened to the body.
+        </p>
+        <a class="arrow" href="#" data-open-modal="case"><img class="arrow-icon" src="/icons/arrow-lng.svg" alt="" /><span>Discuss Your Case</span></a>
       </div>
     </section>
-
-    <section class="wd-gallery">
-      <div class="wd-gallery-inner">
-        <div class="wd-gallery-label">Selected Work</div>
-        <div class="wd-gallery-grid">
-          <div class="wd-gallery-item"></div>
-          <div class="wd-gallery-item"></div>
-          <div class="wd-gallery-item"></div>
-          <div class="wd-gallery-item"></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="wd-cta">
-      <a class="wd-cta-link" href="#" data-open-modal="case"><img class="arrow-icon" src="/icons/arrow-lng.svg" alt="" /><span>Get Started</span></a>
-    </div>
 
     <Footer />
   </main>

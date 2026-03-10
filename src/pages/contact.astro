@@ -1,0 +1,173 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base title="Contact | Vult Labs" description="Start a case discussion with Vult. Crash reconstruction and medical visualization for litigation.">
+  <Nav />
+
+  <main class="contact-page">
+    <section class="contact-header">
+      <div class="contact-header-inner">
+        <h1 class="contact-title">Discuss Your Case.</h1>
+        <p class="contact-intro">
+          Vult produces cinematic crash and medical visualizations for litigation and mediation. If you have a case that could benefit from clear visual evidence, start the conversation below.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-form-section">
+      <div class="contact-form-inner">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="contact-group">
+            <div class="contact-row">
+              <div class="contact-field">
+                <label class="contact-label">First Name</label>
+                <input class="contact-input" type="text" name="firstName" autocomplete="given-name" />
+              </div>
+              <div class="contact-field">
+                <label class="contact-label">Last Name</label>
+                <input class="contact-input" type="text" name="lastName" autocomplete="family-name" />
+              </div>
+            </div>
+            <label class="contact-label">Email *</label>
+            <input class="contact-input" type="email" name="email" required autocomplete="email" placeholder="your@email.com" />
+            <label class="contact-label">Law Firm / Organization</label>
+            <input class="contact-input" type="text" name="organization" autocomplete="organization" />
+          </div>
+
+          <div class="contact-group">
+            <label class="contact-label">Case Type</label>
+            <div class="contact-options">
+              <label class="contact-option">
+                <input type="radio" name="caseType" value="Crash Reconstruction" />
+                <span>Crash Reconstruction</span>
+              </label>
+              <label class="contact-option">
+                <input type="radio" name="caseType" value="Medical Visualization" />
+                <span>Medical Visualization</span>
+              </label>
+              <label class="contact-option">
+                <input type="radio" name="caseType" value="Other" />
+                <span>Other</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="contact-group">
+            <label class="contact-label">Case Overview</label>
+            <textarea class="contact-input contact-textarea" name="caseOverview" rows="5" placeholder="Short description of the case or visualization needed."></textarea>
+            <label class="contact-label contact-label-upload">Supporting material (optional)</label>
+            <label class="contact-upload">
+              <input type="file" name="attachment" />
+              <span class="contact-upload-text">Choose file</span>
+            </label>
+          </div>
+
+          <button class="contact-submit" type="submit">Submit Case</button>
+        </form>
+
+        <div class="contact-confirmation" id="contactConfirmation" style="display:none;">
+          <h2 class="contact-thanks">Thank You</h2>
+          <p class="contact-thanks-desc">Your case inquiry has been received. We will follow up shortly.</p>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Base>
+
+<!-- Hidden form for FormSubmit -->
+<form
+  id="contactHiddenForm"
+  action="https://formsubmit.co/ops.vult@gmail.com"
+  method="POST"
+  enctype="multipart/form-data"
+  target="contactSubmitFrame"
+  style="display:none"
+>
+  <input type="text" name="_honey" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_next" value="about:blank" />
+  <input type="hidden" name="_subject" value="" />
+  <input type="hidden" name="email" />
+  <input type="hidden" name="First Name" />
+  <input type="hidden" name="Last Name" />
+  <input type="hidden" name="Organization" />
+  <input type="hidden" name="Case Type" />
+  <input type="hidden" name="Case Overview" />
+</form>
+<iframe name="contactSubmitFrame" id="contactSubmitFrame" style="display:none" tabindex="-1"></iframe>
+
+<script>
+  function initContactForm() {
+    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const confirmation = document.getElementById('contactConfirmation') as HTMLElement;
+    const uploadInput = form?.querySelector('input[type="file"]') as HTMLInputElement;
+    const uploadText = form?.querySelector('.contact-upload-text') as HTMLElement;
+
+    if (!form) return;
+
+    uploadInput?.addEventListener('change', () => {
+      if (uploadInput.files && uploadInput.files.length > 0 && uploadText) {
+        uploadText.textContent = uploadInput.files[0].name;
+      }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = (form.querySelector('input[name="email"]') as HTMLInputElement)?.value;
+      if (!email) {
+        (form.querySelector('input[name="email"]') as HTMLInputElement)?.focus();
+        return;
+      }
+
+      const firstName = (form.querySelector('input[name="firstName"]') as HTMLInputElement)?.value;
+      const lastName = (form.querySelector('input[name="lastName"]') as HTMLInputElement)?.value;
+      const organization = (form.querySelector('input[name="organization"]') as HTMLInputElement)?.value;
+      const caseType = (form.querySelector('input[name="caseType"]:checked') as HTMLInputElement)?.value || '';
+      const caseOverview = (form.querySelector('textarea[name="caseOverview"]') as HTMLTextAreaElement)?.value;
+
+      const submitBtn = form.querySelector('.contact-submit') as HTMLButtonElement;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      const hidden = document.getElementById('contactHiddenForm') as HTMLFormElement;
+      (hidden.querySelector('[name="email"]') as HTMLInputElement).value = email;
+      (hidden.querySelector('[name="First Name"]') as HTMLInputElement).value = firstName;
+      (hidden.querySelector('[name="Last Name"]') as HTMLInputElement).value = lastName;
+      (hidden.querySelector('[name="Organization"]') as HTMLInputElement).value = organization;
+      (hidden.querySelector('[name="Case Type"]') as HTMLInputElement).value = caseType;
+      (hidden.querySelector('[name="Case Overview"]') as HTMLInputElement).value = caseOverview;
+      (hidden.querySelector('[name="_subject"]') as HTMLInputElement).value =
+        `Case Inquiry: ${caseType || 'New'} - ${firstName} ${lastName}`;
+
+      const fileInput = form.querySelector('input[type="file"]') as HTMLInputElement;
+      const existingFile = hidden.querySelector('input[name="attachment"]');
+      if (existingFile) existingFile.remove();
+      if (fileInput?.files?.length) {
+        const clone = fileInput.cloneNode(true) as HTMLInputElement;
+        const dt = new DataTransfer();
+        for (let i = 0; i < fileInput.files.length; i++) {
+          dt.items.add(fileInput.files[i]);
+        }
+        clone.files = dt.files;
+        clone.name = 'attachment';
+        clone.style.display = 'none';
+        hidden.appendChild(clone);
+      }
+
+      hidden.submit();
+
+      setTimeout(() => {
+        form.style.display = 'none';
+        confirmation.style.display = 'block';
+      }, 800);
+    });
+  }
+
+  initContactForm();
+</script>

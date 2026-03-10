@@ -11,7 +11,7 @@
       <p class="modal-desc">Enter your email to begin a case discussion with Vult.</p>
       <div class="modal-fields">
         <label class="modal-label">Email *</label>
-        <input class="modal-input" type="email" name="email" required autocomplete="email" placeholder="you@firm.com" />
+        <input class="modal-input" type="email" name="email" required autocomplete="email" placeholder="your@email.com" />
       </div>
       <button class="modal-btn" data-next="2">Proceed</button>
     </div>
@@ -229,7 +229,7 @@
       (form.querySelector('[name="Case Type"]') as HTMLInputElement).value = caseType;
       (form.querySelector('[name="Case Overview"]') as HTMLInputElement).value = caseOverview;
       (form.querySelector('[name="_subject"]') as HTMLInputElement).value =
-        `Case Inquiry: ${caseType || 'New'} — ${firstName} ${lastName}`;
+        `Case Inquiry: ${caseType || 'New'} - ${firstName} ${lastName}`;
 
       // Move the file input into the hidden form for submission
       const modalFileInput = backdrop!.querySelector('input[type="file"]') as HTMLInputElement;

@@ -5,7 +5,7 @@ import WorkDetailHero from "../../components/WorkDetailHero.astro";
 import Footer from "../../components/Footer.astro";
 ---
 
-<Base title="Crash — Vult Labs" description="Cinematic crash reconstruction visuals. Stills and motion built from verified data, structured for the courtroom.">
+<Base title="Crash | Vult Labs" description="Cinematic crash reconstruction visuals. Stills and motion built from verified data, structured for the courtroom.">
   <Nav />
   <WorkDetailHero title="Crash." variant="scene" />
 
@@ -14,30 +14,19 @@ import Footer from "../../components/Footer.astro";
       <div class="wd-meta-inner">
         <div class="wd-meta-row">
           <div>
-            <div class="wd-label">Category</div>
-            <div class="wd-value">Crash Reconstruction</div>
+            <div class="wd-label">Focus</div>
+            <div class="wd-value">Crash Reconstruction<br />Collision Visualization<br />Vehicle Dynamics</div>
           </div>
           <div>
-            <div class="wd-label">Offerings</div>
-            <div class="wd-value">Stills<br />Motion</div>
+            <div class="wd-label">Motion</div>
+            <div class="wd-value">Crash reconstruction animation<br />Vehicle movement and timing<br />Collision sequence playback<br />Camera-driven crash views</div>
           </div>
-          <a class="wd-back" href="/#work">← Work</a>
-        </div>
-
-        <div class="wd-caps">
-          <div class="wd-caps-label">Capabilities</div>
-          <div class="wd-caps-grid">
-            <span>Scene photography</span>
-            <span>3D reconstruction</span>
-            <span>Aerial mapping</span>
-            <span>Forensic documentation</span>
-            <span>Physics-based animation</span>
-            <span>Timeline visualization</span>
-            <span>Annotated exhibits</span>
-            <span>Expert collaboration</span>
-            <span>Courtroom-ready output</span>
+          <div>
+            <div class="wd-label">Stills</div>
+            <div class="wd-value">Impact moment frames<br />Vehicle position diagrams<br />Scene overview visuals<br />Exhibit-ready crash frames</div>
           </div>
         </div>
+        <p class="wd-meta-note">Projects may include motion, stills, or a combination of both.</p>
       </div>
     </section>
 
@@ -50,28 +39,14 @@ import Footer from "../../components/Footer.astro";
     <section class="wd-desc">
       <div class="wd-desc-inner">
         <p class="wd-desc-text">
-          Cinematic crash reconstruction — stills and motion — built from
-          verified data to make complex accidents undeniable. Every frame
-          is accurate to the physics, structured for the courtroom.
+          Crash reconstructions turn crash data and expert findings into clear visual stories of what happened.
         </p>
+        <p class="wd-desc-text">
+          Each project begins with verified case materials and expert analysis. These elements are reconstructed through the craft of our studio to show how the collision occurred and why it matters.
+        </p>
+        <a class="arrow" href="#" data-open-modal="case"><img class="arrow-icon" src="/icons/arrow-lng.svg" alt="" /><span>Discuss Your Case</span></a>
       </div>
     </section>
-
-    <section class="wd-gallery">
-      <div class="wd-gallery-inner">
-        <div class="wd-gallery-label">Selected Work</div>
-        <div class="wd-gallery-grid">
-          <div class="wd-gallery-item"></div>
-          <div class="wd-gallery-item"></div>
-          <div class="wd-gallery-item"></div>
-          <div class="wd-gallery-item"></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="wd-cta">
-      <a class="wd-cta-link" href="#" data-open-modal="case"><img class="arrow-icon" src="/icons/arrow-lng.svg" alt="" /><span>Get Started</span></a>
-    </div>
 
     <Footer />
   </main>
