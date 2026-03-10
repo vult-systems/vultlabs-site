@@ -273,7 +273,7 @@ img { max-width: 100%; display: block; }
 .search-no-results {
   padding: 14px 0;
   font-size: 14px;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.5);
 }
 
 /* Side menu panel - A24-style left drawer */
@@ -1224,7 +1224,7 @@ h3 a:hover {
   .grid { width: calc(100% - 64px); }
 
   .card.media { padding: 32px; }
-  .grid.two.about .card.media { padding: 32px; min-height: 400px; }
+  .grid.two.about .card.media { padding: 32px; min-height: auto; }
 
   .media-placeholder.scene   { min-height: 480px; }
   .media-placeholder.motion  { min-height: 400px; }
@@ -1286,6 +1286,11 @@ h3 a:hover {
 
   .card.media { padding: 24px; }
   .grid.two.about .card.media { padding: 24px; min-height: auto; }
+
+  .about-hero-img {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
 
   .media-placeholder {
     height: auto;

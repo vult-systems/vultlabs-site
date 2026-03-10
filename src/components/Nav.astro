@@ -77,13 +77,21 @@
 
   function renderResults(results: typeof pages) {
     if (!searchResults) return;
+    searchResults.replaceChildren();
     if (results.length === 0 && searchInput.value.trim()) {
-      searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+      const noRes = document.createElement('div');
+      noRes.className = 'search-no-results';
+      noRes.textContent = 'No results found';
+      searchResults.appendChild(noRes);
       return;
     }
-    searchResults.innerHTML = results.map(r =>
-      `<a class="search-result" href="${r.href}">${r.title}</a>`
-    ).join('');
+    results.forEach(r => {
+      const link = document.createElement('a');
+      link.className = 'search-result';
+      link.href = r.href;
+      link.textContent = r.title;
+      searchResults.appendChild(link);
+    });
   }
 
   function navigateToFirst() {
