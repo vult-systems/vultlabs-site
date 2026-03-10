@@ -1208,18 +1208,35 @@ h3 a:hover {
   .floating-hamburger { top: 32px; left: 32px; }
 
   .grid.two,
-  .grid.two.flip {
+  .grid.two.flip,
+  .grid.two.about {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  /* Work section mobile reorder: kicker → media → title → desc → arrow */
+  /* Break copy apart so we can interleave: kicker → media → title → desc → arrow */
   .grid.two .copy { display: contents; }
   .grid.two .copy .kicker       { order: 1; }
   .grid.two .card.media         { order: 2; }
   .grid.two .copy h2,
-  .grid.two .copy h3            { order: 3; }
+  .grid.two .copy h3            { order: 3; margin-top: 8px; }
   .grid.two .copy .section-desc { order: 4; }
   .grid.two .copy .arrow        { order: 5; }
+
+  /* Dividers between About / Crash / Medical on mobile */
+  .section + .section {
+    position: relative;
+    padding-top: 48px;
+  }
+  .section + .section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 32px;
+    right: 32px;
+    height: 1px;
+    background: rgba(0,0,0,.1);
+  }
 
   .grid { width: calc(100% - 64px); }
 
@@ -1232,7 +1249,10 @@ h3 a:hover {
   .media-placeholder.trial   { min-height: 400px; }
 
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-col.wide {
+    grid-column: 1 / -1;
   }
 
   .footer-inner { width: calc(100% - 64px); }
