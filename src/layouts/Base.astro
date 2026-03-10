@@ -5,12 +5,19 @@ import CaseModal from "../components/CaseModal.astro";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
+
+const SITE = "https://vultlabs.com";
 
 const {
   title = "Vult Labs",
   description = "Vult builds cinematic litigation visuals that turn complex accidents, injuries, and technical failures into clear visual evidence. Accurate to the data. Structured for the courtroom.",
+  image = "/og-default.jpg",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, SITE).href;
+const ogImage = new URL(image, SITE).href;
 ---
 
 <html lang="en">
@@ -19,25 +26,84 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="theme-color" content="#0b0d0f" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://vultlabs.com" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Vult Labs" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vult",
+      "legalName": "Vult, LLC",
+      "url": SITE,
+      "logo": `${SITE}/icons/logo-blk.svg`,
+      "description": "Cinematic crash and medical visualizations for litigation.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Antonio",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/vultlabs",
+        "https://www.youtube.com/@vultlabs",
+        "https://www.instagram.com/vultlabs"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "ops.vult@gmail.com",
+        "contactType": "customer service"
+      }
+    })} />
+
+    <!-- JSON-LD: WebSite (enables sitelinks search box) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Vult Labs",
+      "url": SITE
+    })} />
+
+    <!--
+      Google Tag Manager — replace GTM-XXXXXX with your container ID.
+      Uncomment when ready to run ads or analytics.
+    -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXX');</script> -->
   </head>
 
   <body>
+    <!--
+      GTM noscript fallback — uncomment with the script above.
+    -->
+    <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+
     <slot />
     <CaseModal />
   </body>
